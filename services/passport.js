@@ -21,7 +21,8 @@ passport.use(
     {
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
-      callbackURL: "/auth/google/callback"
+      callbackURL: "/auth/google/callback",
+      proxy: true
     },
     (accessToken, refreshToken, profile, done) => {
       User.findOne({ authId: profile.id }).then(existingUser => {
@@ -48,7 +49,8 @@ passport.use(
     {
       clientID: keys.linkedinClientID,
       clientSecret: keys.linkedinClientSecret,
-      callbackURL: "/auth/linkedin/callback"
+      callbackURL: "/auth/linkedin/callback",
+      proxy: true
     },
     (accessToken, refreshToken, profile, done) => {
       User.findOne({ authId: profile.id }).then(existingUser => {
