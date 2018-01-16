@@ -22,7 +22,8 @@ app.use(paspport.session());
 require("./routes/authRoutes")(app);
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/client/build")));
+  //its a production version buddy forwad it to build i.e index.html
+  app.use(express.static("client/build"));
 
   const path = require("path");
 
