@@ -1,0 +1,240 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  overflow-x: hidden;
+  background: url(./bg.png);
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/*=========Separator=========*/
+
+.boxs {
+  width: 10px;
+  height: 10px;
+  background-color: #e74c3c;
+  transform: rotate(45deg);
+}
+
+.separator {
+  width: 10px;
+  height: 10px;
+  margin: 20px auto;
+  position: relative;
+  display: inline-block;
+}
+
+.separator:after {
+  position: absolute;
+  left: 5%;
+  bottom: 4px;
+  height: 3px;
+  width: 150px;
+  background: #000;
+  content: "";
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.separator:before {
+  position: absolute;
+  right: 5%;
+  bottom: 4px;
+  height: 3px;
+  width: 150px;
+  background: #000;
+  content: "";
+  display: inline-block;
+  margin-right: 20px;
+  transform: rotate(0deg);
+}
+
+.separator2 {
+  height: 4px;
+  width: 150px;
+  margin: 10px 0px;
+  background: #eeeeee;
+}
+
+/* ===Hedding Part Chalu=== */
+
+h1 {
+  font-family: "Oswald", sans-serif;
+  text-decoration: bold;
+  color: #ecf0f1;
+  font-size: 45px;
+  text-shadow: 2px 2px 10px #000;
+}
+
+/* ===Hedding Part khatam=== */
+
+/* ===Event Part Chalu=== */
+
+.eventimg {
+  text-align: center;
+  background-color: #34495e;
+  border-radius: 30px 00px;
+  height: 450px;
+  box-shadow: 0px 0px 10px #000;
+  width: 300px;
+  padding-top: 20px;
+  padding-left: 25px;
+  padding-right: 25px;
+  color: #bdc3c7;
+  margin: auto;
+  margin-bottom: 40px;
+}
+.eventimg:hover {
+  box-shadow: 5px 5px 20px #000;
+}
+
+h2 {
+  text-align: center;
+  text-shadow: 1px 1px 4px #000;
+}
+
+p {
+  text-align: justify;
+}
+
+.btn {
+  border: 2px solid;
+}
+
+.login {
+  width: 250px;
+  height: auto;
+}
+
+.std {
+  padding-top: 50px;
+}
+
+/* ===FormField=== */
+.formSec h2 {
+  color: #fff;
+  font-size: 50px;
+}
+
+.ff {
+  align-items: center;
+  margin-left: 80px;
+  margin-right: 80px;
+  width: 800px;
+  height: auto;
+}
+
+@media screen and (max-width: 960px) {
+  .ff {
+    align-items: center;
+    margin-left: 80px;
+    margin-right: 80px;
+    width: 800px;
+    height: auto;
+  }
+}
+@media screen and (max-width: 770px) {
+  .ff {
+    align-items: center;
+    margin-left: 80px;
+    margin-right: 80px;
+    width: 400px;
+    height: auto;
+  }
+}
+@media screen and (max-width: 500px) {
+  .ff {
+    align-items: center;
+    margin-left: 15px;
+    margin-right: 15px;
+    width: 400px;
+    height: auto;
+  }
+}
+@media screen and (max-width: 400px) {
+  .ff {
+    align-items: center;
+    margin-left: 15px;
+    margin-right: 15px;
+    width: 350px;
+    height: auto;
+  }
+}
+
+/* ===Profile=== */
+
+.proShow {
+  position: fixed;
+  width: 284px;
+  height: 486px;
+  text-align: center;
+  line-height: 45px;
+  margin-top: 40px;
+  margin-left: 15px;
+  margin-right: 15px;
+  transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+}
+.proShow:hover {
+  box-shadow: 2px 2px 15px #fff;
+}
+
+.proF {
+  text-align: center;
+  color: #34495e;
+  font-size: 2em;
+}
+
+.pro_head {
+  background: #e74c3c;
+  padding: 30px 0px;
+  background: #999999;
+  position: relative;
+  height: 130px;
+}
+
+.pro_body {
+  background: #ecf0f1;
+  font-size: 18px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  text-align: center;
+  padding: 90px 0px 30px 0px;
+}
+/* ===Profile ka img=== */
+
+.E1img {
+  background: #000;
+  position: absolute;
+  left: 25%;
+  bottom: -50%;
+  height: 150px;
+  width: 150px;
+  margin: 30 auto;
+  padding: 30px 0px;
+  border-radius: 50%;
+  box-shadow: 0px 0px 0px 10px rgba(244, 245, 249, 0.3);
+}
+.E1img:hover {
+  position: absolute;
+  left: 15%;
+  bottom: -48%;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  padding: 30px 0px;
+  border-radius: 2%;
+  box-shadow: 0px 0px 0px 10px rgba(244, 245, 249, 0.3);
+  transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -webkit-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  -ms-transition: all 1s ease-in-out;
+}

@@ -30,7 +30,8 @@ passport.use(
           done(null, existingUser);
         } else {
           new User({
-            authId: profile.id
+            authId: profile.id,
+            userName: profile.displayName
           })
             .save()
             .then(user => done(null, user));
@@ -58,7 +59,8 @@ passport.use(
           done(null, existingUser);
         } else {
           new User({
-            authId: profile.id
+            authId: profile.id,
+            userName: profile.displayName
           })
             .save()
             .then(user => done(null, user));
