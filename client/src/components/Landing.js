@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Animated } from "react-animated-css";
-import { Navbar, NavItem, Nav, NavDropdown, MenuItem } from "react-bootstrap";
+//import { Navbar, NavItem, Nav, NavDropdown, MenuItem } from "react-bootstrap";
 
 class Landing extends Component {
   render() {

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Animated } from "react-animated-css";
-import { Navbar, NavItem, Nav, NavDropdown, MenuItem } from "react-bootstrap";
+
 import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
