@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
 import { Animated } from "react-animated-css";
 import { FormGroup, InputGroup, FormControl } from "react-bootstrap";
 var FontAwesome = require("react-fontawesome");
@@ -9,33 +11,33 @@ class RegForm extends Component {
       <div>
         <Animated animationIn="zoomIn" animationOut="zoomOut" isVisible={true}>
           <div className="row">
-            <div class="col-md-3 col-sm-4">
-              <div class="proShow">
-                <div class="pro_head">
-                  <div class="E1img">
+            <div className="col-md-3 col-sm-4">
+              <div className="proShow">
+                <div className="pro_head">
+                  <div className="E1img">
                     <img src="" />
                   </div>
                 </div>
 
-                <div class="pro_body">
-                  <p class="proF">
+                <div className="pro_body">
+                  <p className="proF">
                     Name
                     <br /> hsjkj ksk
                     <br /> jdjkjk
                     <br /> jkfkjjk
                   </p>
-                  <a href="" class="btn btn-md">
+                  <a href="" className="btn btn-md">
                     Details
                   </a>
                 </div>
               </div>
             </div>
 
-            <div class="col-md-9 col-sm-4">
-              <div class="formSec">
+            <div className="col-md-9 col-sm-4">
+              <div className="formSec">
                 <h2>Edit Profile</h2>
                 <br />
-                <form class="ff">
+                <form className="ff">
                   <fieldset>
                     <legend>Personal Info</legend>
                     <FormGroup>
@@ -173,5 +175,8 @@ class RegForm extends Component {
     );
   }
 }
+function mapStateToProps(state) {
+  return { auth: state.auth };
+}
 
-export default RegForm;
+export default connect(mapStateToProps)(RegForm);

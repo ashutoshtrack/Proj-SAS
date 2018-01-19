@@ -24,8 +24,8 @@ class Landing extends Component {
             </div>
           </Animated>
 
-          <div class="col-md-4 col-sm-4">
-            <div class="eventimg">
+          <div className="col-md-4 col-sm-4">
+            <div className="eventimg">
               <h2>Students</h2>
               <br />
               <p>
@@ -38,14 +38,14 @@ class Landing extends Component {
                 sunt in culpa qui officia deserunt mollit anim id est laborum."
               </p>
               <br />
-              <a href="/student" class="btn">
+              <a href="/student" className="btn">
                 Register Here!
               </a>
             </div>
           </div>
 
-          <div class="col-md-4 col-sm-4">
-            <div class="eventimg center">
+          <div className="col-md-4 col-sm-4">
+            <div className="eventimg center">
               <h2>Startups</h2>
               <br />
               <p>
@@ -58,14 +58,14 @@ class Landing extends Component {
                 sunt in culpa qui officia deserunt mollit anim id est laborum."
               </p>
               <br />
-              <a href="#" class="btn">
+              <a href="#" className="btn">
                 Register Here!
               </a>
             </div>
           </div>
 
-          <div class="col-md-4 col-sm-4">
-            <div class="eventimg center">
+          <div className="col-md-4 col-sm-4">
+            <div className="eventimg center">
               <h2>Angels</h2>
               <br />
               <p>
@@ -78,7 +78,7 @@ class Landing extends Component {
                 sunt in culpa qui officia deserunt mollit anim id est laborum."
               </p>
               <br />
-              <a href="#" class="btn">
+              <a href="#" className="btn">
                 Register Here!
               </a>
             </div>

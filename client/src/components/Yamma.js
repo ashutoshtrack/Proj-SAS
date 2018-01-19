@@ -1,23 +1,23 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { Navbar, NavItem, Nav, NavDropdown, MenuItem } from "react-bootstrap";
+//import { Link } from "react-router-dom";
+import { Navbar, NavItem, Nav } from "react-bootstrap";
 
 class Yamma extends Component {
   renderContent() {
     switch (this.props.auth) {
       case null:
-        return "Still logging";
+        return (
+          <Nav pullRight>
+            <NavItem eventKey={5}>Processing</NavItem>
+          </Nav>
+        );
 
       case false:
         return (
           <Nav pullRight>
-            <NavItem eventKey={1} href="#">
-              About Us
-            </NavItem>
-            <NavItem eventKey={2} href="#">
-              Stats
-            </NavItem>
+            <NavItem eventKey={1}>About Us</NavItem>
+            <NavItem eventKey={2}>Stats</NavItem>
             <NavItem eventKey={3} href="#abc">
               Get In
             </NavItem>

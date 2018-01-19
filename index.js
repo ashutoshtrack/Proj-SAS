@@ -2,13 +2,16 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
 const paspport = require("passport");
+const bodyParser = require("body-parser");
 const keys = require("./config/keys");
 require("./models/User");
+require("./models/Regis");
 require("./services/passport");
 
 mongoose.connect(keys.mongoURI);
 const app = express();
 
+app.use(bodyParser.json());
 app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,
@@ -20,6 +23,7 @@ app.use(paspport.initialize());
 app.use(paspport.session());
 
 require("./routes/authRoutes")(app);
+require("./routes/regisRoutes")(app);
 
 if (process.env.NODE_ENV === "production") {
   //its a production version buddy forwad it to build i.e index.html
