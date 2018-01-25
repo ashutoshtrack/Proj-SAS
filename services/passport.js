@@ -31,7 +31,9 @@ passport.use(
         } else {
           new User({
             authId: profile.id,
-            userName: profile.displayName
+            userName: profile.displayName,
+            gender: profile.gender,
+            provider: profile.provider
           })
             .save()
             .then(user => done(null, user));
@@ -60,7 +62,9 @@ passport.use(
         } else {
           new User({
             authId: profile.id,
-            userName: profile.displayName
+            userName: profile.displayName,
+            gender: profile.gender,
+            provider: profile.provider
           })
             .save()
             .then(user => done(null, user));

@@ -3,7 +3,9 @@ const { Schema } = mongoose;
 
 const userSchema = new Schema({
   authId: String,
-  userName: String
+  userName: String,
+  gender: String,
+  provider: String
 });
 
 mongoose.model("users", userSchema);

@@ -3,8 +3,8 @@ import React, { Component } from "react";
 import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
-//import Header from "./Header";
-import Yamma from "./Yamma";
+import Header from "./Header";
+//import Yamma from "./Yamma";
 import RegForm from "./RegForm";
 import RegForme from "./RegForme";
 
@@ -32,7 +32,7 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <div>
-            <Yamma />
+            <Header />
             <Route exact path="/" component={Landing} />
             <Route exact path="/student" component={Student} />
             <Route

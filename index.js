@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const keys = require("./config/keys");
 require("./models/User");
 require("./models/Regis");
+require("./models/Resume");
 require("./services/passport");
 
 mongoose.connect(keys.mongoURI);
@@ -24,6 +25,7 @@ app.use(paspport.session());
 
 require("./routes/authRoutes")(app);
 require("./routes/regisRoutes")(app);
+require("./routes/resumeRoutes")(app);
 
 if (process.env.NODE_ENV === "production") {
   //its a production version buddy forwad it to build i.e index.html
