@@ -18,9 +18,21 @@ export const addData = values => {
 };
 
 export const postResume = resume => {
+  let formy = new FormData();
+  formy.append("name", "lakshan");
+  formy.append("file", resume);
+  console.log("frpu", formy);
   return function(dispatch) {
+    const config = {
+      headers: {
+        "Content-Type":
+          "multipart/form-data; boundary=----WebKitFormBoundary2UB2yluNFipmGTV5",
+        "Content-Disposition": " form-data"
+      }
+    };
+
     axios
-      .post("/api/resume", resume)
+      .post("/api/img", formy, config)
       .then(res => dispatch({ type: UPLOAD_RESUME, payload: res.data }));
   };
 };
