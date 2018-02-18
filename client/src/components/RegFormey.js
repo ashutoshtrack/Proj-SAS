@@ -35,21 +35,28 @@ class RegForme extends Component {
   render() {
     return (
       <div>
-        <Animated
-          animationIn="bounceInUp"
-          animationOut="bounceInRight"
-          isVisible={true}
-        >
-          <div className="col-md-12 col-sm-4">
-            <div className="formSec">
+        <div className="col-md-12 col-sm-4">
+          <div className="formSec">
+            <Animated
+              animationIn="bounceInDown"
+              animationOut="bounceInRight"
+              isVisible={true}
+            >
               <div>
-                <h2>Hey {this.props.auth.userName}, register here!</h2>
+                <h2>Hey {this.props.auth.userName}, quick register here!</h2>
                 <br />
               </div>
+            </Animated>
+            <Animated
+              animationIn="bounceInUp"
+              animationOut="bounceInRight"
+              isVisible={true}
+              animationInDelay="0.5"
+            >
               <form className="ff">{this.renderContent()}</form>
-            </div>
+            </Animated>
           </div>
-        </Animated>
+        </div>
       </div>
     );
   }

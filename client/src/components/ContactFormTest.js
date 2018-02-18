@@ -1,6 +1,7 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { InputGroup } from "react-bootstrap";
+import { connect } from "react-redux";
 import InputField from "./InputField";
 var FontAwesome = require("react-fontawesome");
 
@@ -43,10 +44,9 @@ let ContactFormTest = props => {
               </InputGroup.Addon>
               <Field
                 name="phoneno"
-                type="text"
+                type="number"
                 placeholder="Enter Your Phone Number"
                 component={InputField}
-                type="number"
               />
             </InputGroup>
 
@@ -66,5 +66,7 @@ ContactFormTest = reduxForm({
   // a unique name for the form
   form: "basicdetails"
 })(ContactFormTest);
-
-export default ContactFormTest;
+function mapStateToProps(state) {
+  return { auth: state.auth };
+}
+export default connect(mapStateToProps, null)(ContactFormTest);
