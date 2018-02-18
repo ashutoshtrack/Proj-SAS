@@ -12,7 +12,7 @@ let ContactFormTest = props => {
       <div class="formBox">
         <form onSubmit={handleSubmit}>
           <fieldset>
-            <legend>Personal Info</legend>
+            <legend>Personal Information</legend>
             <InputGroup>
               <InputGroup.Addon>
                 <FontAwesome name="user-o" />
