@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FETCH_USER, ADD_DATA, UPLOAD_RESUME } from "./types";
+import { FETCH_USER, ADD_DATA, UPLOAD_RESUME, UPDATE_DATA } from "./types";
 
 export const fetchUser = () => {
   return function(dispatch) {
@@ -14,6 +14,14 @@ export const addData = values => {
     axios
       .post("/api/regist", values)
       .then(res => dispatch({ type: ADD_DATA, payload: res.data }));
+  };
+};
+
+export const updateData = values => {
+  return function(dispatch) {
+    axios
+      .put("/api/regist/_user", values)
+      .then(res => dispatch({ type: UPDATE_DATA, payload: res.data }));
   };
 };
 

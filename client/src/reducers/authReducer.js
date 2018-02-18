@@ -1,5 +1,4 @@
 import { FETCH_USER } from "../actions/types";
-import { ADD_DATA } from "../actions/types";
 
 export default function(state = null, action) {
   console.log(action);

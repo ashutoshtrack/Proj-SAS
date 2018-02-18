@@ -51,7 +51,7 @@ class Header extends Component {
       <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="#home">React-Bootstrap</a>
+            <a href="#home">Stud-Start</a>
           </Navbar.Brand>
         </Navbar.Header>
         {this.renderContent()}

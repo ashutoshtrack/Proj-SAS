@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 //import { Animated } from "react-animated-css";
-import { BrowserRouter, Route, Redirect } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import Header from "./Header";
 //import Yamma from "./Yamma";
-import RegForm from "./RegForm";
-import RegForme from "./RegForme";
+//import RegForm from "./RegForm";
+import RegFormey from "./RegFormey";
 
 import Landing from "./Landing";
 import Student from "./Student";
@@ -38,7 +38,7 @@ class App extends Component {
             <Route
               exact
               path="/new"
-              render={() => (loggedin ? <RegForme /> : <Landing />)}
+              render={() => (loggedin ? <RegFormey /> : <Landing />)}
               //  component={RegForm}
             />
           </div>
