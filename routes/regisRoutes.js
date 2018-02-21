@@ -5,36 +5,56 @@ const Regis = mongoose.model("regist");
 
 module.exports = app => {
   app.post("/api/regist", requireLogin, async (req, res) => {
-    const { firstName, email, projName } = req.body;
+    const { firstName, email, phoneno, orgName, locationer, ghLink } = req.body;
     console.log(req.body);
     console.log(req.user.id, "holaholahola");
 
     const regist = new Regis({
       firstName,
       email,
-      projName,
+      phoneno,
+      orgName,
+      locationer,
+      ghLink,
       _user: req.user.id
     });
     const mas = await regist.save();
     res.send(mas);
   });
-  app.put("/api/regist/:_id", requireLogin, async (req, res) => {
+  app.put("/api/regist/:ide", requireLogin, async (req, res) => {
     var formie = req.body;
-    var query = req.params._id;
-    console.log(req, "holaform");
+    var query = req.user.id;
+    console.log(query, "query");
 
     var update = {
       $set: {
-        projName: formie.projName
+        orgName: formie.orgName,
+        locationer: formie.locationer,
+        ghLink: formie.ghLink
       }
     };
 
     var options = { new: true };
-    Regis.findOneAndUpdate(query, update, options, function(err, abc) {
+    Regis.findOneAndUpdate({ _user: query }, update, options, function(
+      err,
+      abc
+    ) {
       if (err) {
         throw err;
       }
       res.json(abc);
+    });
+  });
+
+  app.get("/api/regist/:usere", requireLogin, function(req, res) {
+    console.log("Reqparams", req.params);
+    let usere = req.params.usere;
+    console.log("usere", usere);
+    Regis.findOne({ _user: usere }, function(err, regist) {
+      if (err) {
+        throw err;
+      }
+      res.json(regist);
     });
   });
 };

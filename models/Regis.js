@@ -4,7 +4,10 @@ const { Schema } = mongoose;
 const regisSchema = new Schema({
   firstName: String,
   email: String,
-  projName: String,
+  phoneno: String,
+  orgName: String,
+  locationer: String,
+  ghLink: String,
 
   _user: { type: Schema.Types.ObjectId, ref: "User" }
 });
