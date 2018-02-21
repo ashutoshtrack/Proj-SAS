@@ -3,16 +3,18 @@ import { Field, reduxForm } from "redux-form";
 import { InputGroup } from "react-bootstrap";
 import { connect } from "react-redux";
 import InputField from "./InputField";
+
 var FontAwesome = require("react-fontawesome");
 
 let ContactFormTest = props => {
   const { handleSubmit } = props;
   return (
     <div>
-      <div class="formBox">
+      <div className="formBox">
         <form onSubmit={handleSubmit}>
           <fieldset>
             <legend>Personal Information</legend>
+
             <InputGroup>
               <InputGroup.Addon>
                 <FontAwesome name="user-o" />
@@ -20,10 +22,12 @@ let ContactFormTest = props => {
               <Field
                 name="firstName"
                 type="text"
+                value="dhik"
                 placeholder="Enter Full Name"
                 component={InputField}
               />
             </InputGroup>
+
             <br />
             <InputGroup>
               <InputGroup.Addon>
@@ -51,8 +55,8 @@ let ContactFormTest = props => {
             </InputGroup>
 
             <br />
-            <button type="submit" class="btnSub">
-              Save
+            <button type="submit" className="btnSub">
+              Next
             </button>
           </fieldset>
         </form>
@@ -64,7 +68,9 @@ let ContactFormTest = props => {
 
 ContactFormTest = reduxForm({
   // a unique name for the form
-  form: "basicdetails"
+  form: "basicdetails",
+  destroyOnUnmount: false
+
 })(ContactFormTest);
 function mapStateToProps(state) {
   return { auth: state.auth };

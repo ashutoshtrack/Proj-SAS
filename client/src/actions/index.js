@@ -1,11 +1,25 @@
 import axios from "axios";
-import { FETCH_USER, ADD_DATA, UPLOAD_RESUME, UPDATE_DATA } from "./types";
+import {
+  FETCH_USER,
+  ADD_DATA,
+  UPLOAD_RESUME,
+  UPDATE_DATA,
+  FETCH_REG
+} from "./types";
 
 export const fetchUser = () => {
   return function(dispatch) {
     axios
       .get("/api/current_user")
       .then(res => dispatch({ type: FETCH_USER, payload: res.data }));
+  };
+};
+
+export const fetchRegDetails = id => {
+  return function(dispatch) {
+    axios
+      .get("/api/regist/" + id)
+      .then(res => dispatch({ type: FETCH_REG, payload: res.data }));
   };
 };
 
@@ -20,7 +34,7 @@ export const addData = values => {
 export const updateData = values => {
   return function(dispatch) {
     axios
-      .put("/api/regist/_user", values)
+      .put("/api/regist/_id", values)
       .then(res => dispatch({ type: UPDATE_DATA, payload: res.data }));
   };
 };

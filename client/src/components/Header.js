@@ -47,11 +47,12 @@ class Header extends Component {
 
   render() {
     console.log(this.props);
+
     return (
       <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="#home">Stud-Start</a>
+            <a href="/new">Stud-Start</a>
           </Navbar.Brand>
         </Navbar.Header>
         {this.renderContent()}

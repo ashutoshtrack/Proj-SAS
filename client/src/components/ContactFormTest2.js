@@ -2,29 +2,54 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { InputGroup } from "react-bootstrap";
 import InputField from "./InputField";
+var FontAwesome = require("react-fontawesome");
 
-let ContactFormTest = props => {
+let ContactFormTest2 = props => {
   const { handleSubmit } = props;
   return (
     <div>
-      <div class="formBox margT20">
+      <div className="formBox margT20">
         <form onSubmit={handleSubmit}>
           <fieldset>
-            <legend>Project</legend>
+            <legend>Some more Info...</legend>
             <InputGroup>
-              <InputGroup.Addon>Project Name</InputGroup.Addon>
-              <Field name="projName" type="text" component={InputField} />
+              <InputGroup.Addon>Organisation</InputGroup.Addon>
+              <Field
+                name="orgName"
+                type="text"
+                placeholder="Your current organisation"
+                component={InputField}
+              />
             </InputGroup>
             <br />
 
-            <div class="width600">
-              <InputGroup>
-                <InputGroup.Addon>Project Link</InputGroup.Addon>
-                <Field name="projLink" type="text" component={InputField} />
-              </InputGroup>
-            </div>
-            <button type="submit" class="btnSub2">
-              Add
+            <InputGroup>
+              <InputGroup.Addon>
+                <FontAwesome name="map-marker" />
+              </InputGroup.Addon>
+              <Field
+                name="locationer"
+                type="text"
+                component={InputField}
+                placeholder="Location: e.g, Mumbai"
+              />
+            </InputGroup>
+            <br />
+
+            <InputGroup>
+              <InputGroup.Addon>
+                <FontAwesome name="github" />
+              </InputGroup.Addon>
+              <Field
+                name="ghLink"
+                type="text"
+                component={InputField}
+                placeholder="https://www.github.com/userProfile  if you have any (optional)"
+              />
+            </InputGroup>
+            <br />
+            <button type="submit" className="btnSub">
+              Save
             </button>
           </fieldset>
         </form>
@@ -33,9 +58,10 @@ let ContactFormTest = props => {
   );
 };
 
-ContactFormTest = reduxForm({
+ContactFormTest2 = reduxForm({
   // a unique name for the form
-  form: "projdetails"
-})(ContactFormTest);
+  form: "moredetails",
+  destroyOnUnmount: false
+})(ContactFormTest2);
 
-export default ContactFormTest;
+export default ContactFormTest2;
