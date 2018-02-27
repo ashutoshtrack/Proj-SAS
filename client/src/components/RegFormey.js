@@ -117,7 +117,7 @@ function mapStateToProps(state) {
   return {
     form: state.form,
     auth: state.auth,
-    respo: state.respo
+    respo: state.respo.respo
   };
 }
 export default connect(mapStateToProps, actions)(RegForme);
