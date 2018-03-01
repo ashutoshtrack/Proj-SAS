@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import logoG from "../google.png";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -23,10 +22,27 @@ class Dashboard extends Component {
       </h2>
 */
   renderAlbums() {
-    return (
-      <div className="row">
-        {this.state.albums.map((album, i) => (
-          <div className=" col-md-4" key={i}>
+    let content = [];
+    this.state.albums.forEach((album, i) => {
+      if ((i + 1) % 4 === 0) {
+        content.push(
+          <div className="row" key={i}>
+            <div className=" col-md-3" key={i}>
+              <div className=" mango">
+                <img src={album.image} alt="Avatar" style={{ width: "100%" }} />
+                <div className="containere">
+                  <h4>
+                    <b> {album.title}</b>
+                  </h4>
+                  <p>Architect & Engineer</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      } else {
+        content.push(
+          <div className=" col-md-3" key={i}>
             <div className=" mango">
               <img src={album.image} alt="Avatar" style={{ width: "100%" }} />
               <div className="containere">
@@ -37,9 +53,11 @@ class Dashboard extends Component {
               </div>
             </div>
           </div>
-        ))}
-      </div>
-    );
+        );
+      }
+    });
+
+    return <div>{content}</div>;
   }
 
   render() {
