@@ -11,7 +11,7 @@ class Dashboard extends Component {
   }
   componentWillMount() {
     axios
-      .get("http://rallycoding.herokuapp.com/api/music_albums")
+      .get("https://rallycoding.herokuapp.com/api/music_albums")
       .then(response => this.setState({ albums: response.data }));
   }
   /*
