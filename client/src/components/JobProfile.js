@@ -24,10 +24,7 @@ class JobProfile extends Component {
         <div>
           <div className="row" class="compHead">
             <div class="compImg">
-              <img
-                src="http://www.stickpng.com/assets/images/580b57fcd9996e24bc43c521.png"
-                class="jprfIMG"
-              />
+              <img src={this.state.jobs[0].image} class="jprfIMG" />
             </div>
           </div>
 

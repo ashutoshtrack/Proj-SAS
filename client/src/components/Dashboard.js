@@ -35,11 +35,7 @@ https://rallycoding.herokuapp.com/api/music_albums
         >
           <div className=" mango">
             <div className="row" class="imgFrm">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc5ZrXkJ9_-saTn1fMl7nllUVCgHuRUeHnH3aArfmln_xoSyHzhg"
-                alt="Avatar"
-                class="prfIMG"
-              />
+              <img src={album.image} alt="Avatar" class="prfIMG" />
             </div>
             <div className="containere">
               <h4>
