@@ -5,8 +5,6 @@ import "bootstrap/dist/css/bootstrap-theme.css";
 import "animate.css/animate.min.css";
 import "font-awesome/css/font-awesome.min.css";
 import "./index.css";
-import "font-awesome/css/font-awesome.min.css";
-import "./index.css";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import reduxThunk from "redux-thunk";
