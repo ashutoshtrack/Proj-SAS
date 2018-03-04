@@ -8,6 +8,7 @@ import Header from "./Header";
 //import RegForm from "./RegForm";
 import RegFormey from "./RegFormey";
 
+import JobProfile from "./JobProfile";
 import Landing from "./Landing";
 import Student from "./Student";
 import "../index.css";
@@ -63,6 +64,7 @@ class App extends Component {
             <Header />
             <Route exact path="/" component={Landing} />
             <Route exact path="/student" component={Student} />
+            <Route exact path="/jobProfile" component={JobProfile} />
             <Route
               exact
               path="/dashboard"

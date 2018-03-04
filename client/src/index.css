@@ -3,13 +3,16 @@ body {
   padding: 0;
   font-family: sans-serif;
   overflow-x: hidden;
-  background-color: #07a3a3;
+  background-color: #dfe6e9;
   background-size: 100% 100%;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+/* #07a3a3 */
+
 .navbar-default {
   box-shadow: inset 0 0 0 rgba(0, 0, 0, 0), 0 10px 5px rgba(0, 0, 0, 0.35);
   background-color: beige;
@@ -383,12 +386,12 @@ h1 {
 .mango {
   /* Add shadows to create the "card" effect */
   width: 300px;
-  height: auto;
+  height: 334px;
   background-color: bisque;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   margin: 10px;
-  border: 2px solid #000;
+  border: 2px solid #fff;
 }
 
 /* On mouse-over, add a deeper shadow */
@@ -396,7 +399,101 @@ h1 {
   box-shadow: 8px 18px 11px rgba(0, 0, 0, 0.4);
 }
 
+.linkBTN {
+  text-decoration: none;
+  color: #000;
+}
+.linkBTN:hover {
+  text-decoration: none;
+}
+
+.prfIMG {
+  width: 296px;
+  height: auto;
+}
+
+.imgFrm {
+  width: 296px;
+  height: 200px;
+  overflow: hidden;
+}
+
 /* Add some padding inside the card container */
 .containere {
+  background: #ccc;
+  height: 130px;
   padding: 2px 16px;
+}
+
+/* Job Profile View */
+
+.compHead {
+  position: relative;
+  margin-top: 0px;
+  height: 150px;
+  background-color: #a29bfe;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.compImg {
+  position: relative;
+  margin: auto;
+  bottom: -50px;
+  height: 200px;
+  width: 200px;
+  background-color: #000;
+  border-radius: 100%;
+  box-shadow: 0px 0px 0px 10px rgba(178, 190, 195, 0.5);
+  overflow: hidden;
+}
+
+.compBody {
+  margin-top: 125px;
+}
+
+.compDisp {
+  background-color: #fff;
+  margin-top: 15px;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-radius: 2px;
+  padding: 15px;
+  box-shadow: 1px 1px 10px 0px;
+}
+
+@media screen and (max-width: 400px) {
+  .compDisp {
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+
+  .compHead {
+    margin-left: 0.5%;
+    margin-right: 0.5%;
+  }
+}
+
+.title {
+  font-size: 18px;
+}
+
+.title2 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.bld {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.disp {
+  font-size: 16px;
+  font-weight: 200;
 }
