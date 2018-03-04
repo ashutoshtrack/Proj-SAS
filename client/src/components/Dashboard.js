@@ -50,7 +50,7 @@ https://rallycoding.herokuapp.com/api/music_albums
                 <br />
                 Location: {album.location}
                 <br />
-                Exp.: 6 mon to 1 yr.
+                Exp.: {album.experience}.
               </p>
             </div>
           </div>
