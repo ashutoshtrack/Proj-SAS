@@ -38,10 +38,7 @@ class JobProfile extends Component {
               isVisible={true}
             >
               <div className="row" class="compDisp">
-                <p>
-                  <span class="title">About this job</span>
-                  <br />
-                  <br />
+                <p class="mid">
                   <span class="bld">&nbsp;{this.state.jobs[0].title}</span>
                   <br />
                   <span class="name">&nbsp;Company Name</span>
@@ -50,6 +47,11 @@ class JobProfile extends Component {
                     &nbsp;Location: {this.state.jobs[0].location}
                   </span>
                 </p>
+
+                <button class="save">
+                  <span>SAVE </span>
+                </button>
+                <button class="apply">APPLY</button>
               </div>
             </Animated>
             <Animated
@@ -59,6 +61,7 @@ class JobProfile extends Component {
             >
               <div className="row" class="compDisp">
                 <p>
+                  <br />
                   <span class="title2">About Us</span>
                   <br />
                   <br />

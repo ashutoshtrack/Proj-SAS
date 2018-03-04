@@ -453,6 +453,90 @@ h1 {
   height: auto;
 }
 
+/* Buttons */
+.save {
+  display: inline-block;
+  float: right;
+  border-radius: 0px 0px 8px 8px;
+  background-color: #0984e3;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 16px;
+  padding: 5px;
+  width: 100px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 15px;
+}
+
+.save span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.save span:after {
+  font-family: "Font Awesome 5 Free";
+  content: "\f055";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.save:hover span {
+  padding-right: 25px;
+}
+
+.save:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.apply {
+  display: inline-block;
+  margin: 15px;
+  position: relative;
+  float: right;
+  border-radius: 0px 0px 8px 8px;
+  background-color: #ff7675;
+  border: none;
+  font-size: 16px;
+  color: #ffffff;
+  padding: 5px;
+  width: 100px;
+  text-align: center;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.apply:after {
+  content: "";
+  background: #f1f1f1;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s;
+}
+
+.apply:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s;
+}
+/* Buttons Ends */
+
 .compBody {
   margin-top: 125px;
 }
@@ -465,6 +549,10 @@ h1 {
   border-radius: 2px;
   padding: 15px;
   box-shadow: 1px 1px 10px 0px;
+}
+
+.mid {
+  text-align: center;
 }
 
 @media screen and (max-width: 400px) {
@@ -489,11 +577,13 @@ h1 {
 }
 
 .bld {
+  color: #d63031;
   font-size: 20px;
   font-weight: bold;
 }
 
 .name {
+  color: #0984e3;
   font-size: 20px;
   font-weight: 500;
 }
