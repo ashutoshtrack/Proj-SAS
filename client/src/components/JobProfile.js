@@ -85,13 +85,13 @@ class JobProfile extends Component {
                   <br />
                   <br />
                   <span class="title2">
-                    What you will be doing at XYZ Company:
+                    What you will be doing at {this.state.jobs[0].title}:
                   </span>
                   <br />
                   <br />
                   <span class="disp">
                     <ul>
-                      <li>1st Requirement</li>
+                      <li>{this.state.jobs[0].workrole}</li>
                       <li>1st Requirement</li>
                       <li>1st Requirement</li>
                       <li>1st Requirement</li>
@@ -110,7 +110,7 @@ class JobProfile extends Component {
                   <br />
                   <span class="disp">
                     <ul>
-                      <li>1st Requirement</li>
+                      <li>{this.state.jobs[0].qualification}</li>
                       <li>1st Requirement</li>
                       <li>1st Requirement</li>
                       <li>1st Requirement</li>
@@ -141,14 +141,13 @@ class JobProfile extends Component {
                 <span class="title2">&nbsp; &nbsp;Job Function</span>
                 <br />
                 <span class="disp">
-                  &nbsp; &nbsp;Engineering, Information Technology, Design
+                  &nbsp; &nbsp;{this.state.jobs[0].jobfunct}
                 </span>
                 <hr />
                 <span class="title2">&nbsp; &nbsp;Job Industry</span>
                 <br />
                 <span class="disp">
-                  &nbsp; &nbsp;Computer Software, Information Technology and
-                  Service
+                  &nbsp; &nbsp;{this.state.jobs[0].jobindustry}
                 </span>
                 <hr />
               </div>
