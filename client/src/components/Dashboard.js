@@ -25,6 +25,40 @@ https://rallycoding.herokuapp.com/api/music_albums
       </h2>
 */
 
+  renderColumns(album, i) {
+    return (
+      <div className=" col-md-3" key={i}>
+        <Link
+          to={"/jobdesc/" + album._id}
+          activeClassName="active"
+          class="linkBTN"
+        >
+          <div className=" mango">
+            <div className="row" class="imgFrm">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc5ZrXkJ9_-saTn1fMl7nllUVCgHuRUeHnH3aArfmln_xoSyHzhg"
+                alt="Avatar"
+                class="prfIMG"
+              />
+            </div>
+            <div className="containere">
+              <h4>
+                <b> {album.title}</b>
+              </h4>
+              <p>
+                Job Description
+                <br />
+                Location: {album.location}
+                <br />
+                Exp.: {album.experience}.
+              </p>
+            </div>
+          </div>
+        </Link>
+      </div>
+    );
+  }
+
   renderAlbums() {
     let content = [];
     let linkBTN = "./jobProfile";
@@ -32,65 +66,11 @@ https://rallycoding.herokuapp.com/api/music_albums
       if ((i + 1) % 4 === 0) {
         content.push(
           <div className="row" key={i}>
-            <div className=" col-md-3" key={i}>
-              <Link to={"/jobdesc"} class="linkBTN">
-                <div className=" mango">
-                  <div className="row" class="imgFrm">
-                    <img
-                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Facebook_New_Logo_%282015%29.svg/2000px-Facebook_New_Logo_%282015%29.svg.png"
-                      alt="Avatar"
-                      class="prfIMG"
-                    />
-                  </div>
-                  <div className="containere">
-                    <h4>
-                      <b> {album.title}</b>
-                    </h4>
-                    <p>
-                      Job Description
-                      <br />
-                      Location: Mumbai
-                      <br />
-                      Exp.: 6 mon to 1 yr.
-                    </p>
-                  </div>
-                </div>
-              </Link>
-            </div>
+            {this.renderColumns(album, i)}
           </div>
         );
       } else {
-        content.push(
-          <div className=" col-md-3" key={i}>
-            <Link
-              to={"/jobdesc/" + album._id}
-              activeClassName="active"
-              class="linkBTN"
-            >
-              <div className=" mango">
-                <div className="row" class="imgFrm">
-                  <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc5ZrXkJ9_-saTn1fMl7nllUVCgHuRUeHnH3aArfmln_xoSyHzhg"
-                    alt="Avatar"
-                    class="prfIMG"
-                  />
-                </div>
-                <div className="containere">
-                  <h4>
-                    <b> {album.title}</b>
-                  </h4>
-                  <p>
-                    Job Description
-                    <br />
-                    Location: {album.location}
-                    <br />
-                    Exp.: 6 mon to 1 yr.
-                  </p>
-                </div>
-              </div>
-            </Link>
-          </div>
-        );
+        content.push(this.renderColumns(album, i));
       }
     });
 
