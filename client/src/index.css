@@ -11,13 +11,6 @@ body {
   background-size: cover;
 }
 
-/* #07a3a3 */
-
-.navbar-default {
-  box-shadow: inset 0 0 0 rgba(0, 0, 0, 0), 0 10px 5px rgba(0, 0, 0, 0.35);
-  background-color: beige;
-  background-image: linear-gradient(to bottom, #fff 0%, #f9f9c9 100%);
-}
 .col-sm-4 {
   padding-top: 50px;
 }
@@ -31,6 +24,32 @@ body {
   font-size: 50px;
   text-align: center;
   text-shadow: 1px 1px 4px #000;
+}
+
+/*=========Navbar=========*/
+
+.navDeco {
+  font-weight: bold;
+  background-color: #000;
+}
+
+.gearSize {
+  font-size: 20px;
+  color: #ff7675;
+}
+
+.iconSize {
+  color: #ff7675;
+  font-size: 15px;
+  float: right;
+}
+
+.navPic {
+  width: 22px;
+  height: 22px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  overflow: hidden;
 }
 
 /*=========Separator=========*/
@@ -478,7 +497,7 @@ h1 {
 }
 
 .save span:after {
-  font-family: "Font Awesome 5 Free";
+  font-family: FontAwesome;
   content: "\f055";
   position: absolute;
   opacity: 0;
@@ -577,7 +596,7 @@ h1 {
 }
 
 .bld {
-  color: #d63031;
+  color: #ff7675;
   font-size: 20px;
   font-weight: bold;
 }
