@@ -64,7 +64,7 @@ class App extends Component {
             <Header />
             <Route exact path="/" component={Landing} />
             <Route exact path="/student" component={Student} />
-            <Route exact path="/jobProfile" component={JobProfile} />
+            <Route exact path="/jobdesc/:albumid" component={JobProfile} />
             <Route
               exact
               path="/dashboard"
