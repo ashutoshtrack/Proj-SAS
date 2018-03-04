@@ -39,10 +39,7 @@ class Header extends Component {
           <Navbar.Collapse>
             <Nav pullRight>
               <NavItem>
-                <img
-                  src="http://qnimate.com/wp-content/uploads/2014/03/images2.jpg"
-                  class="navPic"
-                />&nbsp;&nbsp;
+                <img src={this.props.auth.image} class="navPic" />&nbsp;&nbsp;
                 {this.props.auth.userName}
               </NavItem>
               <NavDropdown
@@ -95,15 +92,25 @@ class Header extends Component {
     console.log(this.props);
 
     return (
-      <Navbar inverse collapseOnSelect class="navDeco">
-        <Navbar.Header>
-          <Navbar.Brand>
-            <a href="/new">Stud-Start</a>
-          </Navbar.Brand>
-          <Navbar.Toggle />
-        </Navbar.Header>
-        {this.renderContent()}
-      </Navbar>
+      <div>
+        <Navbar
+          className="navbar-fixed-top"
+          collapseOnSelect
+          navbar-fixed-top
+          class="navDeco"
+        >
+          <Navbar.Header>
+            <Navbar.Brand>
+              <a href="/new">Stud-Start</a>
+            </Navbar.Brand>
+            <Navbar.Toggle />
+          </Navbar.Header>
+          {this.renderContent()}
+        </Navbar>
+        <br />
+        <br />
+        <br />
+      </div>
       /*   <nav>
         <div className="nav-wrapper">
           <a className="left brand-logo">Saas</a>
