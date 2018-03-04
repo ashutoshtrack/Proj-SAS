@@ -407,15 +407,15 @@ h1 {
   text-decoration: none;
 }
 
-.prfIMG {
-  width: 296px;
-  height: auto;
-}
-
 .imgFrm {
   width: 296px;
   height: 200px;
   overflow: hidden;
+}
+
+.prfIMG {
+  width: 296px;
+  height: 200px;
 }
 
 /* Add some padding inside the card container */
@@ -446,6 +446,11 @@ h1 {
   border-radius: 100%;
   box-shadow: 0px 0px 0px 10px rgba(178, 190, 195, 0.5);
   overflow: hidden;
+}
+
+.jprfIMG {
+  width: 200px;
+  height: auto;
 }
 
 .compBody {

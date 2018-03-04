@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 class Dashboard extends Component {
@@ -11,16 +12,52 @@ class Dashboard extends Component {
   }
   componentWillMount() {
     axios
-      .get("https://rallycoding.herokuapp.com/api/music_albums")
+      .get("/api/jobdesc")
       .then(response => this.setState({ albums: response.data }));
   }
   /*
 
+
+https://rallycoding.herokuapp.com/api/music_albums
    <h2 key={album.title}>
         {album.title}
         <br />
       </h2>
 */
+
+  renderColumns(album, i) {
+    return (
+      <div className=" col-md-3" key={i}>
+        <Link
+          to={"/jobdesc/" + album._id}
+          activeClassName="active"
+          class="linkBTN"
+        >
+          <div className=" mango">
+            <div className="row" class="imgFrm">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSc5ZrXkJ9_-saTn1fMl7nllUVCgHuRUeHnH3aArfmln_xoSyHzhg"
+                alt="Avatar"
+                class="prfIMG"
+              />
+            </div>
+            <div className="containere">
+              <h4>
+                <b> {album.title}</b>
+              </h4>
+              <p>
+                Job Description
+                <br />
+                Location: {album.location}
+                <br />
+                Exp.: 6 mon to 1 yr.
+              </p>
+            </div>
+          </div>
+        </Link>
+      </div>
+    );
+  }
 
   renderAlbums() {
     let content = [];
@@ -29,53 +66,11 @@ class Dashboard extends Component {
       if ((i + 1) % 4 === 0) {
         content.push(
           <div className="row" key={i}>
-            <div className=" col-md-3" key={i}>
-              <a href={linkBTN} class="linkBTN">
-                <div className=" mango">
-                  <div className="row" class="imgFrm">
-                    <img src={album.image} alt="Avatar" class="prfIMG" />
-                  </div>
-                  <div className="containere">
-                    <h4>
-                      <b> {album.title}</b>
-                    </h4>
-                    <p>
-                      Job Description
-                      <br />
-                      Location: Mumbai
-                      <br />
-                      Exp.: 6 mon to 1 yr.
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>
+            {this.renderColumns(album, i)}
           </div>
         );
       } else {
-        content.push(
-          <div className=" col-md-3" key={i}>
-            <a href={linkBTN} class="linkBTN">
-              <div className=" mango">
-                <div className="row" class="imgFrm">
-                  <img src={album.image} alt="Avatar" class="prfIMG" />
-                </div>
-                <div className="containere">
-                  <h4>
-                    <b> {album.title}</b>
-                  </h4>
-                  <p>
-                    Job Description
-                    <br />
-                    Location: Mumbai
-                    <br />
-                    Exp.: 6 mon to 1 yr.
-                  </p>
-                </div>
-              </div>
-            </a>
-          </div>
-        );
+        content.push(this.renderColumns(album, i));
       }
     });
 
@@ -87,7 +82,7 @@ class Dashboard extends Component {
 
     return (
       <div>
-        <h1> JOBs for you </h1>
+        <h1> Job&#39;s for you </h1>
         <div>{this.renderAlbums()}</div>
       </div>
     );

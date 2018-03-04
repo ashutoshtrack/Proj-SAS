@@ -9,6 +9,7 @@ const keys = require("./config/keys");
 require("./models/User");
 require("./models/Regis");
 require("./models/Resume");
+require("./models/Jobdesc");
 require("./services/passport");
 
 mongoose.connect(keys.mongoURI);
@@ -38,6 +39,7 @@ app.use(paspport.session());
 require("./routes/authRoutes")(app);
 require("./routes/regisRoutes")(app);
 require("./routes/resumeRoutes")(app);
+require("./routes/jobdescRoutes")(app);
 
 let main = require("./routes/routing");
 app.use("/api", main);
