@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { Animated } from "react-animated-css";
 import axios from "axios";
 
 class Dashboard extends Component {
@@ -70,7 +71,17 @@ https://rallycoding.herokuapp.com/api/music_albums
       }
     });
 
-    return <div>{content}</div>;
+    return (
+      <div>
+        <Animated
+          animationIn="fadeInUpBig"
+          animationOut="fadeOut"
+          isVisible={true}
+        >
+          {content}
+        </Animated>
+      </div>
+    );
   }
 
   render() {
