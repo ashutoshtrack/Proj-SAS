@@ -53,7 +53,7 @@ class Header extends Component {
                     <FontAwesome name="edit" />
                   </span>
                 </MenuItem>
-                <MenuItem eventKey={3.2}>
+                <MenuItem eventKey={3.2} href="/viewProfile">
                   View Profile
                   <span class="iconSize">
                     <FontAwesome name="eye" />

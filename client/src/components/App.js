@@ -9,6 +9,7 @@ import Header from "./Header";
 import RegFormey from "./RegFormey";
 
 import JobProfile from "./JobProfile";
+import ViewProfile from "./ViewProfile";
 import Landing from "./Landing";
 import Student from "./Student";
 import "../index.css";
@@ -65,6 +66,7 @@ class App extends Component {
             <Route exact path="/" component={Landing} />
             <Route exact path="/student" component={Student} />
             <Route exact path="/jobdesc/:albumid" component={JobProfile} />
+            <Route exact path="/viewProfile" component={ViewProfile} />
             <Route
               exact
               path="/dashboard"

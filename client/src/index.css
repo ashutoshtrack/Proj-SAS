@@ -26,6 +26,27 @@ body {
   text-shadow: 1px 1px 4px #000;
 }
 
+/*=========Carosal=========*/
+
+.hid {
+  visibility: hidden;
+  height: 0px;
+}
+
+@media screen and (max-width: 600px) {
+  .hid {
+    visibility: visible;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .hid {
+    visibility: visible;
+    height: auto;
+  }
+}
+
 /*=========Navbar=========*/
 
 .navbar-default {
@@ -403,6 +424,9 @@ h1 {
 .check {
   background-color: #ccc;
 }
+
+/*======Dashboard======*/
+
 .mango {
   /* Add shadows to create the "card" effect */
   width: 300px;
@@ -611,4 +635,94 @@ h1 {
 .disp {
   font-size: 16px;
   font-weight: 200;
+}
+
+/*======= Student Profile View =======*/
+
+.profHead {
+  position: relative;
+  margin-top: 0px;
+  height: 150px;
+  background-color: #ff7675;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.edP {
+  display: inline-block;
+  float: right;
+  border-radius: 0px 0px 8px 8px;
+  background-color: #00b894;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 16px;
+  padding: 5px;
+  width: 100px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 15px;
+}
+
+.edP span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.edP span:after {
+  font-family: FontAwesome;
+  content: "\f044";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.edP:hover span {
+  padding-right: 25px;
+}
+
+.edP:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.pad {
+  padding: 0px 15px 0px 20px;
+}
+
+.del {
+  border-radius: 2px;
+  font-size: 20px;
+  border: none;
+  float: right;
+  background-color: rgba(0, 0, 0, 0);
+  color: #ff7675;
+  font-size: 25px;
+}
+
+.skill {
+  width: 50px;
+  padding: 10px;
+  border-radius: 35px;
+  font-size: 15px;
+  background-color: #d1e2ff;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.min {
+  margin: auto;
+  margin-bottom: 20px;
+  font-size: 15px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  color: #ff7675;
+}
+
+.inline {
+  display: inline;
 }
