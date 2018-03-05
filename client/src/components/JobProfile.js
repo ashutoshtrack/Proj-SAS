@@ -5,14 +5,36 @@ import axios from "axios";
 //import { Navbar, NavItem, Nav, NavDropdown, MenuItem } from "react-bootstrap";
 
 class JobProfile extends Component {
-  state = {
-    jobs: null
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      jobs: null
+    };
+  }
+
   componentWillMount() {
     console.log("this is the bommb", window.location);
     axios
       .get("/api" + window.location.pathname)
       .then(response => this.setState({ jobs: response.data }));
+  }
+
+  workrolefetcher() {
+    let contentboy = [];
+
+    this.state.jobs[0].workrole.forEach(worky => {
+      contentboy.push(<li>{worky}</li>);
+    });
+    /*   let contentboy = [];
+    this.state.jobs[0].workrole.forEach(worky => {
+      contentboy.push(<li>{worky}</li>);
+      console.log(contentboy);
+      return { contentboy };
+    });
+    */
+    //  console.log("gotchya bhai", this.state.jobs[0].workrole);
+
+    return <ul>{contentboy}</ul>;
   }
 
   render() {
@@ -64,22 +86,6 @@ class JobProfile extends Component {
                   <br />
                   <span class="disp">
                     &nbsp; &nbsp; &nbsp;{this.state.jobs[0].description}
-                    <br />
-                    <br />
-                    &nbsp; &nbsp; &nbsp;Lorem Ipsum is simply dummy text of the
-                    printing and typesetting industry. Lorem Ipsum has been the
-                    industrys standard dummy text ever since the 1500s, when an
-                    unknown printer took a galley of type and scrambled it to
-                    make a type specimen book. It has survived not only five
-                    centuries, but also the leap into electronic typesetting. It
-                    has survived not only five centuries, but also the leap into
-                    electronic typesetting.
-                    <br />
-                    <br />
-                    &nbsp; &nbsp; &nbsp;Lorem Ipsum is simply dummy text of the
-                    printing and typesetting industry. Lorem Ipsum has been the
-                    industrys standard dummy text ever since the 1500s, when an
-                    unknown printer took a galley of type and scrambled.
                   </span>
                   <br />
                   <br />
@@ -89,20 +95,7 @@ class JobProfile extends Component {
                   </span>
                   <br />
                   <br />
-                  <span class="disp">
-                    <ul>
-                      <li>{this.state.jobs[0].workrole}</li>
-                      <li>1st Requirement</li>
-                      <li>1st Requirement</li>
-                      <li>1st Requirement</li>
-                      <li>1st Requirement</li>
-                      <li>1st Requirement</li>
-                      <li>1st Requirement</li>
-                      <li>1st Requirement</li>
-                      <li>1st Requirement</li>
-                      <li>1st Requirement</li>
-                    </ul>
-                  </span>
+                  <span class="disp">{this.workrolefetcher()}</span>
                   <br />
                   <br />
                   <span class="title2">What we require of you:</span>
