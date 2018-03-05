@@ -66,7 +66,8 @@ passport.use(
             authId: profile.id,
             userName: profile.displayName,
             gender: profile.gender,
-            provider: profile.provider
+            provider: profile.provider,
+            image: profile.photos[0].value
           })
             .save()
             .then(user => done(null, user));
