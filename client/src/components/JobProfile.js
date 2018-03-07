@@ -25,18 +25,16 @@ class JobProfile extends Component {
     this.state.jobs[0].workrole.forEach(worky => {
       contentboy.push(<li>{worky}</li>);
     });
-    /*   let contentboy = [];
-    this.state.jobs[0].workrole.forEach(worky => {
-      contentboy.push(<li>{worky}</li>);
-      console.log(contentboy);
-      return { contentboy };
-    });
-    */
-    //  console.log("gotchya bhai", this.state.jobs[0].workrole);
-
     return <ul>{contentboy}</ul>;
   }
+  qualificationfetcher() {
+    let contentboy = [];
 
+    this.state.jobs[0].qualification.forEach(worky => {
+      contentboy.push(<li>{worky}</li>);
+    });
+    return <ul>{contentboy}</ul>;
+  }
   render() {
     console.log(this.state.jobs);
     if (!this.state.jobs === null || !this.state.jobs === false) {
@@ -67,7 +65,7 @@ class JobProfile extends Component {
                   </span>
                 </p>
 
-                <button class="save">
+                <button class="save" onClick={()=>{alert("bhai mast na!")}}>
                   <span>SAVE </span>
                 </button>
                 <button class="apply">APPLY</button>
@@ -101,20 +99,7 @@ class JobProfile extends Component {
                   <span class="title2">What we require of you:</span>
                   <br />
                   <br />
-                  <span class="disp">
-                    <ul>
-                      <li>{this.state.jobs[0].qualification}</li>
-                      <li>1st Requirement</li>
-                      <li>1st Requirement</li>
-                      <li>1st Requirement</li>
-                      <li>1st Requirement</li>
-                      <li>1st Requirement</li>
-                      <li>1st Requirement</li>
-                      <li>1st Requirement</li>
-                      <li>1st Requirement</li>
-                      <li>1st Requirement</li>
-                    </ul>
-                  </span>
+                  <span class="disp">{this.qualificationfetcher()}</span>
                 </p>
               </div>
             </Animated>

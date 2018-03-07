@@ -7,7 +7,7 @@ const jobdescSchema = new Schema({
   experience: String,
   description: String,
   workrole: [String],
-  qualification: String,
+  qualification: [String],
   emptype: String,
   jobfunct: String,
   jobindustry: String
