@@ -18,7 +18,9 @@ class JobProfile extends Component {
     super(props);
     this.state = {
       jobs: null,
-      show: false
+      show: false,
+      jobsupdtres: null,
+      saveText: "SAVE"
     };
   }
 
@@ -28,6 +30,7 @@ class JobProfile extends Component {
       .get("/api" + window.location.pathname)
       .then(response => this.setState({ jobs: response.data }));
   }
+
   // work fetchers
   workrolefetcher() {
     let contentboy = [];
@@ -66,6 +69,14 @@ class JobProfile extends Component {
     if (!this.state.jobs === null || !this.state.jobs === false) {
       console.log("jobbyprofiler", this.state.jobs[0].title);
 
+      if (this.state.jobs[0].savedJob === "true") {
+        if (this.state.saveText === "SAVED") {
+          console.log("Already setText Done!");
+        } else {
+          this.setState({ saveText: "SAVED" });
+        }
+      }
+
       //modal workouts here
       const popover = (
         <Popover id="modal-popover" title="popover">
@@ -100,11 +111,28 @@ class JobProfile extends Component {
                   </span>
                 </p>
 
-                <button class="save">
-                  <span>
-                    {" "}
-                    <Link to={"/savedJobs"}>SAVE </Link>{" "}
-                  </span>
+                <button
+                  class="save"
+                  onClick={() => {
+                    axios
+                      .put("/api/jobdesc/" + this.state.jobs[0]._id)
+                      .then(response => {
+                        if (
+                          !this.state.jobs[0].savedJob === false ||
+                          !!this.state.jobs[0].savedJob === true
+                        ) {
+                          console.log("updatesaved", response.data);
+                          alert(
+                            "Your Job at " +
+                              this.state.jobs[0].title +
+                              " is saved successfully"
+                          );
+                          this.setState({ saveText: "SAVED" });
+                        }
+                      });
+                  }}
+                >
+                  <span>{this.state.saveText}</span>
                 </button>
                 <button class="apply" onClick={this.handleShow.bind(this)}>
                   APPLY
