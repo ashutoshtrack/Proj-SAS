@@ -1,6 +1,15 @@
 import React, { Component } from "react";
+import {
+  Modal,
+  Button,
+  Popover,
+  OverlayTrigger,
+  Tooltip
+} from "react-bootstrap";
+import SavedJobsArena from "./SavedJobsArena";
 import { Animated } from "react-animated-css";
 import axios from "axios";
+import { Route, Link } from "react-router-dom";
 
 //import { Navbar, NavItem, Nav, NavDropdown, MenuItem } from "react-bootstrap";
 
@@ -8,7 +17,8 @@ class JobProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      jobs: null
+      jobs: null,
+      show: false
     };
   }
 
@@ -18,29 +28,52 @@ class JobProfile extends Component {
       .get("/api" + window.location.pathname)
       .then(response => this.setState({ jobs: response.data }));
   }
-
+  // work fetchers
   workrolefetcher() {
     let contentboy = [];
 
     this.state.jobs[0].workrole.forEach(worky => {
       contentboy.push(<li>{worky}</li>);
     });
-    /*   let contentboy = [];
-    this.state.jobs[0].workrole.forEach(worky => {
-      contentboy.push(<li>{worky}</li>);
-      console.log(contentboy);
-      return { contentboy };
-    });
-    */
-    //  console.log("gotchya bhai", this.state.jobs[0].workrole);
 
     return <ul>{contentboy}</ul>;
   }
+  //quaalifications fetcher
+  qualficationfetcher() {
+    let contentboy = [];
+
+    this.state.jobs[0].qualification.forEach(qually => {
+      contentboy.push(<li>{qually}</li>);
+    });
+
+    return <ul>{contentboy}</ul>;
+  }
+
+  //modal workouts starts
+
+  handleClose() {
+    this.setState({ show: false });
+  }
+
+  handleShow() {
+    this.setState({ show: true });
+  }
+
+  // modal workouts end here
 
   render() {
     console.log(this.state.jobs);
     if (!this.state.jobs === null || !this.state.jobs === false) {
       console.log("jobbyprofiler", this.state.jobs[0].title);
+
+      //modal workouts here
+      const popover = (
+        <Popover id="modal-popover" title="popover">
+          very popover. such engagement
+        </Popover>
+      );
+      const tooltip = <Tooltip id="modal-tooltip">wow.</Tooltip>;
+      //modal workout end here
 
       return (
         <div>
@@ -68,9 +101,53 @@ class JobProfile extends Component {
                 </p>
 
                 <button class="save">
-                  <span>SAVE </span>
+                  <span>
+                    {" "}
+                    <Link to={"/savedJobs"}>SAVE </Link>{" "}
+                  </span>
                 </button>
-                <button class="apply">APPLY</button>
+                <button class="apply" onClick={this.handleShow.bind(this)}>
+                  APPLY
+                </button>
+
+                <Modal
+                  show={this.state.show}
+                  onHide={this.handleClose.bind(this)}
+                >
+                  <Modal.Header closeButton>
+                    <Modal.Title>Profile Checkout</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    <h4>Quick Fill</h4>
+                    <p>
+                      Duis mollis, est non commodo luctus, nisi erat porttitor
+                      ligula.
+                    </p>
+
+                    <h4>Popover in a modal</h4>
+                    <p>
+                      there is a{" "}
+                      <OverlayTrigger overlay={popover}>
+                        <a href="#popover">popover</a>
+                      </OverlayTrigger>{" "}
+                      here
+                    </p>
+
+                    <h4>Tooltips in a modal</h4>
+                    <p>
+                      there is a{" "}
+                      <OverlayTrigger overlay={tooltip}>
+                        <a href="#tooltip">tooltip</a>
+                      </OverlayTrigger>{" "}
+                      here
+                    </p>
+
+                    <hr />
+                  </Modal.Body>
+                  <Modal.Footer>
+                    <Button onClick={this.handleClose.bind(this)}>Close</Button>
+                  </Modal.Footer>
+                </Modal>
               </div>
             </Animated>
             <Animated
@@ -101,20 +178,7 @@ class JobProfile extends Component {
                   <span class="title2">What we require of you:</span>
                   <br />
                   <br />
-                  <span class="disp">
-                    <ul>
-                      <li>{this.state.jobs[0].qualification}</li>
-                      <li>1st Requirement</li>
-                      <li>1st Requirement</li>
-                      <li>1st Requirement</li>
-                      <li>1st Requirement</li>
-                      <li>1st Requirement</li>
-                      <li>1st Requirement</li>
-                      <li>1st Requirement</li>
-                      <li>1st Requirement</li>
-                      <li>1st Requirement</li>
-                    </ul>
-                  </span>
+                  <span class="disp">{this.qualficationfetcher()}</span>
                 </p>
               </div>
             </Animated>
