@@ -19,6 +19,7 @@ class JobProfile extends Component {
       .then(response => this.setState({ jobs: response.data }));
   }
 
+  //--fetches the work role (What will you do at xyz company)
   workrolefetcher() {
     let contentboy = [];
 
@@ -27,6 +28,9 @@ class JobProfile extends Component {
     });
     return <ul>{contentboy}</ul>;
   }
+
+///----fetches content for what criterias are for ocmpani'es
+
   qualificationfetcher() {
     let contentboy = [];
 
@@ -35,6 +39,8 @@ class JobProfile extends Component {
     });
     return <ul>{contentboy}</ul>;
   }
+
+
   render() {
     console.log(this.state.jobs);
     if (!this.state.jobs === null || !this.state.jobs === false) {

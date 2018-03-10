@@ -10,7 +10,8 @@ const jobdescSchema = new Schema({
   qualification: [String],
   emptype: String,
   jobfunct: String,
-  jobindustry: String
+  jobindustry: String,
+  savedJob: String
 });
 
 mongoose.model("jobdesc", jobdescSchema);

@@ -59,8 +59,8 @@ class Header extends Component {
                     <FontAwesome name="eye" />
                   </span>
                 </MenuItem>
-                <MenuItem eventKey={3.3}>
-                  Save JobList
+                <MenuItem eventKey={3.3} href="/savedJobs">
+                  Saved JobList
                   <span class="iconSize">
                     <FontAwesome name="bookmark" />
                   </span>

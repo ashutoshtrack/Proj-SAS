@@ -14,6 +14,7 @@ import Landing from "./Landing";
 import Student from "./Student";
 import "../index.css";
 import Dashboard from "./Dashboard";
+import SavedJobsArena from "./SavedJobsArena";
 
 //const Header = () => <h2>Header</h2>;
 
@@ -83,6 +84,7 @@ class App extends Component {
                 }
               }}
             />
+            <Route exact path="/savedJobs" component={SavedJobsArena} />
           </div>
         </BrowserRouter>
       </div>
