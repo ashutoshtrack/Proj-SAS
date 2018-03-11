@@ -22,13 +22,13 @@ class Student extends Component {
 
                 <br />
                 <a href="/auth/google">
-                  <img src={logoG} className="login" />
+                  <img src={logoG} alt="dp" className="login" />
                 </a>
                 <br />
                 <br />
                 <br />
                 <a href="/auth/linkedin">
-                  <img src={logoL} className="login" />
+                  <img src={logoL} alt="gatekeeper" className="login" />
                 </a>
               </div>
             </div>

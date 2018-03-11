@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 //import { Animated } from "react-animated-css";
-import { BrowserRouter, Route, Redirect } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import Header from "./Header";
 //import Yamma from "./Yamma";
 //import RegForm from "./RegForm";
 import RegFormey from "./RegFormey";
-
+import ContactForm from "./ContactForm";
 import JobProfile from "./JobProfile";
 import ViewProfile from "./ViewProfile";
 import Landing from "./Landing";
@@ -68,6 +68,7 @@ class App extends Component {
             <Route exact path="/student" component={Student} />
             <Route exact path="/jobdesc/:albumid" component={JobProfile} />
             <Route exact path="/viewProfile" component={ViewProfile} />
+            <Route exacth path="/editprofile" component={ContactForm} />
             <Route
               exact
               path="/dashboard"

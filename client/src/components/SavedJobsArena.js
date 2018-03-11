@@ -13,7 +13,7 @@ class SavedJobsArena extends Component {
   }
   componentWillMount() {
     axios
-      .get("/api/savedjob")
+      .get("/api/sjobs")
       .then(response => this.setState({ savedJobs: response.data }));
   }
 
@@ -21,7 +21,7 @@ class SavedJobsArena extends Component {
     return (
       <div className=" col-md-3" key={i}>
         <Link
-          to={"/jobdesc/" + album._id}
+          to={"/jobdesc/" + album.jobid}
           activeClassName="active"
           class="linkBTN"
         >
@@ -49,7 +49,7 @@ class SavedJobsArena extends Component {
 
   renderAlbums() {
     let content = [];
-    let linkBTN = "./jobProfile";
+
     this.state.savedJobs.forEach((album, i) => {
       if ((i + 1) % 4 === 0) {
         content.push(
@@ -76,8 +76,6 @@ class SavedJobsArena extends Component {
   }
 
   render() {
-    console.log("dashboard component will mount", this.state.albums);
-
     return (
       <div>
         <h1> Your saved Jobs</h1>

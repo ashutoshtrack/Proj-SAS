@@ -11,6 +11,7 @@ require("./models/Regis");
 require("./models/Resume");
 require("./models/Jobdesc");
 require("./services/passport");
+require("./models//Savejobs");
 
 mongoose.connect(keys.mongoURI);
 mongoose.Promise = global.Promise;
@@ -40,7 +41,7 @@ require("./routes/authRoutes")(app);
 require("./routes/regisRoutes")(app);
 require("./routes/resumeRoutes")(app);
 require("./routes/jobdescRoutes")(app);
-
+require("./routes/savedjobsRoutes")(app);
 let main = require("./routes/routing");
 app.use("/api", main);
 

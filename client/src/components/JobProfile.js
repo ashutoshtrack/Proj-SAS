@@ -6,20 +6,22 @@ import {
   OverlayTrigger,
   Tooltip
 } from "react-bootstrap";
-import SavedJobsArena from "./SavedJobsArena";
 import { Animated } from "react-animated-css";
+import { InputGroup, ProgressBar } from "react-bootstrap";
+import InputField from "./InputField";
+import { Field, reduxForm } from "redux-form";
 import axios from "axios";
-import { Route, Link } from "react-router-dom";
 
+var FontAwesome = require("react-fontawesome");
 //import { Navbar, NavItem, Nav, NavDropdown, MenuItem } from "react-bootstrap";
-
+var counter = 0;
 class JobProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
       jobs: null,
       show: false,
-      jobsupdtres: null,
+
       saveText: "SAVE"
     };
   }
@@ -30,7 +32,12 @@ class JobProfile extends Component {
       .get("/api" + window.location.pathname)
       .then(response => this.setState({ jobs: response.data }));
   }
-
+  /* componentWillUpdate() {
+    axios
+      .get("/api/sjobs/" + this.state.jobs[0].id)
+      .then(response => console.log("working mahaveer"));
+  }
+  */
   // work fetchers
   workrolefetcher() {
     let contentboy = [];
@@ -64,11 +71,56 @@ class JobProfile extends Component {
 
   // modal workouts end here
 
+  //dochecker
+  dochecker(ide) {
+    axios.get("/api/sjobs/" + ide).then(response => {
+      console.log("response data lenth", response.data.length);
+      if (response.data.length === 0) {
+        console.log("khali", response);
+        this.setState({ saveText: "SAVE" });
+      } else {
+        console.log("bhara", response);
+        this.setState({ saveText: "SAVED" });
+      }
+    });
+  }
+
+  handleSubmitter() {
+    alert("he");
+  }
+
   render() {
     console.log(this.state.jobs);
     if (!this.state.jobs === null || !this.state.jobs === false) {
       console.log("jobbyprofiler", this.state.jobs[0].title);
 
+      if (counter === 0) {
+        this.dochecker(this.state.jobs[0]._id);
+        counter++;
+      }
+
+      /*switch (this.state.checker) {
+        case false:
+          console.log("maya man ki dola");
+          this.dochecker(this.state.jobs[0]._id);
+          break;
+
+        case true:
+          console.log("punchanama kela");
+          break;
+
+        default:
+          console.log("bhendi");
+      }
+      */
+      /*
+      if (this.state.checker) {
+      } else {
+        //  this.dochecker(this.state.jobs[0]._id);
+        console.log("punchanama kela");
+      }
+*/
+      /*
       if (this.state.jobs[0].savedJob === "true") {
         if (this.state.saveText === "SAVED") {
           console.log("Already setText Done!");
@@ -76,6 +128,7 @@ class JobProfile extends Component {
           this.setState({ saveText: "SAVED" });
         }
       }
+      */
 
       //modal workouts here
       const popover = (
@@ -90,7 +143,11 @@ class JobProfile extends Component {
         <div>
           <div className="row" class="compHead">
             <div class="compImg">
-              <img src={this.state.jobs[0].image} class="jprfIMG" />
+              <img
+                src={this.state.jobs[0].image}
+                alt="companies"
+                class="jprfIMG"
+              />
             </div>
           </div>
 
@@ -114,7 +171,7 @@ class JobProfile extends Component {
                 <button
                   class="save"
                   onClick={() => {
-                    axios
+                    /*       axios
                       .put("/api/jobdesc/" + this.state.jobs[0]._id)
                       .then(response => {
                         if (
@@ -130,6 +187,31 @@ class JobProfile extends Component {
                           this.setState({ saveText: "SAVED" });
                         }
                       });
+                      */
+                    var val = {
+                      jobid: this.state.jobs[0],
+                      title: this.state.jobs[0].title,
+                      location: this.state.jobs[0].location,
+                      experience: this.state.jobs[0].experience,
+                      image: this.state.jobs[0].image,
+                      description: this.state.jobs[0].description,
+                      workrole: this.state.jobs[0].workrole,
+                      qualification: this.state.jobs[0].qualification,
+                      emptype: this.state.jobs[0].emptype,
+                      jobfunct: this.state.jobs[0].jobfunct,
+                      jobindustry: this.state.jobs[0].jobindustry
+                    };
+
+                    axios.post("/api/sjobs", val).then(res => {
+                      if (res.statusText === "OK") {
+                        alert(
+                          "Your Job at " +
+                            this.state.jobs[0].title +
+                            " is saved successfully"
+                        );
+                        this.setState({ saveText: "SAVED" });
+                      }
+                    });
                   }}
                 >
                   <span>{this.state.saveText}</span>
@@ -146,31 +228,35 @@ class JobProfile extends Component {
                     <Modal.Title>Profile Checkout</Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
-                    <h4>Quick Fill</h4>
-                    <p>
-                      Duis mollis, est non commodo luctus, nisi erat porttitor
-                      ligula.
-                    </p>
-
-                    <h4>Popover in a modal</h4>
-                    <p>
-                      there is a{" "}
-                      <OverlayTrigger overlay={popover}>
-                        <a href="#popover">popover</a>
-                      </OverlayTrigger>{" "}
-                      here
-                    </p>
-
-                    <h4>Tooltips in a modal</h4>
-                    <p>
-                      there is a{" "}
-                      <OverlayTrigger overlay={tooltip}>
-                        <a href="#tooltip">tooltip</a>
-                      </OverlayTrigger>{" "}
-                      here
-                    </p>
-
-                    <hr />
+                    <form onSubmit={this.handleSubmitter.bind(this)}>
+                      <fieldset>
+                        <center>
+                          <h4>Mobile number</h4>
+                        </center>
+                        <div className="row">
+                          <div className="col-md-3"></div>
+                          <div className="col-md-6">
+                            <InputGroup>
+                              <InputGroup.Addon>
+                                <FontAwesome name="phone" />
+                              </InputGroup.Addon>
+                              <Field
+                                name="phoneno"
+                                type="text"
+                                component={InputField}
+                                type="number"
+                              />
+                            </InputGroup>
+                          </div>
+                          <div className="col-md-3"></div>
+                        </div>
+                        <br /> <br />
+                        
+                        <div className="col-md-12">
+                          <ProgressBar active now={60} label={`60%`} />;
+                        </div>
+                      </fieldset>
+                    </form>
                   </Modal.Body>
                   <Modal.Footer>
                     <Button onClick={this.handleClose.bind(this)}>Close</Button>
@@ -250,5 +336,10 @@ class JobProfile extends Component {
     );
   }
 }
+
+JobProfile = reduxForm({
+  // a unique name for the form
+  form: "jobby"
+})(JobProfile);
 
 export default JobProfile;

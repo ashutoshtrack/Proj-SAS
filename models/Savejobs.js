@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const jobdescSchema = new Schema({
+const savedjobschema = new Schema({
+  jobid: { type: Schema.Types.ObjectId, ref: "Jobdesc" },
   title: String,
   location: String,
   experience: String,
@@ -12,7 +13,7 @@ const jobdescSchema = new Schema({
   emptype: String,
   jobfunct: String,
   jobindustry: String,
-  savedJob: String
+  _user: { type: Schema.Types.ObjectId, ref: "User" }
 });
 
-mongoose.model("jobdesc", jobdescSchema);
+mongoose.model("savedjob", savedjobschema);
