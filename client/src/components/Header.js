@@ -7,7 +7,7 @@ var FontAwesome = require("react-fontawesome");
 class Header extends Component {
   renderContent() {
     const Droptitle = (
-      <span class="gearSize">
+      <span className="gearSize">
         <FontAwesome name="cogs" />
       </span>
     );
@@ -39,7 +39,11 @@ class Header extends Component {
           <Navbar.Collapse>
             <Nav pullRight>
               <NavItem>
-                <img src={this.props.auth.image} class="navPic" />&nbsp;&nbsp;
+                <img
+                  src={this.props.auth.image}
+                  alt="chotadp"
+                  className="navPic"
+                />&nbsp;&nbsp;
                 {this.props.auth.userName}
               </NavItem>
               <NavDropdown
@@ -49,26 +53,26 @@ class Header extends Component {
               >
                 <MenuItem eventKey={3.1}>
                   Edit Profile
-                  <span class="iconSize">
+                  <span className="iconSize">
                     <FontAwesome name="edit" />
                   </span>
                 </MenuItem>
                 <MenuItem eventKey={3.2} href="/viewProfile">
                   View Profile
-                  <span class="iconSize">
+                  <span className="iconSize">
                     <FontAwesome name="eye" />
                   </span>
                 </MenuItem>
                 <MenuItem eventKey={3.3} href="/savedJobs">
                   Saved JobList
-                  <span class="iconSize">
+                  <span className="iconSize">
                     <FontAwesome name="bookmark" />
                   </span>
                 </MenuItem>
                 <MenuItem divider />
                 <MenuItem eventKey={3.3} href="/api/logout">
                   Logout
-                  <span class="iconSize">
+                  <span className="iconSize">
                     <FontAwesome name="sign-out" />
                   </span>
                 </MenuItem>
@@ -94,10 +98,9 @@ class Header extends Component {
     return (
       <div>
         <Navbar
-          className="navbar-fixed-top"
+          className="navDeco navbar-fixed-top"
+          navbar-fixed-top="true"
           collapseOnSelect
-          navbar-fixed-top
-          class="navDeco"
         >
           <Navbar.Header>
             <Navbar.Brand>

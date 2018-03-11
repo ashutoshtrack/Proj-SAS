@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 const requireLogin = require("../middlewares/requireLogin");
 
+const { Schema } = mongoose;
+const User = mongoose.model("users");
+
 const Regis = mongoose.model("regist");
 
 module.exports = app => {
@@ -16,6 +19,7 @@ module.exports = app => {
       orgName,
       locationer,
       ghLink,
+      registered: "false",
       _user: req.user.id
     });
     const mas = await regist.save();
@@ -30,7 +34,8 @@ module.exports = app => {
       $set: {
         orgName: formie.orgName,
         locationer: formie.locationer,
-        ghLink: formie.ghLink
+        ghLink: formie.ghLink,
+        registered: true
       }
     };
 
@@ -55,6 +60,28 @@ module.exports = app => {
         throw err;
       }
       res.json(regist);
+    });
+  });
+
+  //-----update query
+
+  app.put("/api/userupdater", async (req, res) => {
+    var query = req.user.id;
+    console.log(query, "query");
+
+    var update = {
+      $set: {
+        registered: true
+      }
+    };
+
+    var options = { new: true };
+    User.findOneAndUpdate({ _id: query }, update, options, function(err, abc) {
+      if (err) {
+        throw err;
+      }
+      console.log(res.json(abc), "");
+      res.json(abc);
     });
   });
 };

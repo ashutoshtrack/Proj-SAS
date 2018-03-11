@@ -6,10 +6,8 @@ import {
   OverlayTrigger,
   Tooltip
 } from "react-bootstrap";
-import SavedJobsArena from "./SavedJobsArena";
 import { Animated } from "react-animated-css";
 import axios from "axios";
-import { Route, Link } from "react-router-dom";
 
 //import { Navbar, NavItem, Nav, NavDropdown, MenuItem } from "react-bootstrap";
 
@@ -90,7 +88,11 @@ class JobProfile extends Component {
         <div>
           <div className="row" class="compHead">
             <div class="compImg">
-              <img src={this.state.jobs[0].image} class="jprfIMG" />
+              <img
+                src={this.state.jobs[0].image}
+                alt="companies"
+                class="jprfIMG"
+              />
             </div>
           </div>
 
@@ -114,7 +116,7 @@ class JobProfile extends Component {
                 <button
                   class="save"
                   onClick={() => {
-                    axios
+                    /*       axios
                       .put("/api/jobdesc/" + this.state.jobs[0]._id)
                       .then(response => {
                         if (
@@ -130,6 +132,26 @@ class JobProfile extends Component {
                           this.setState({ saveText: "SAVED" });
                         }
                       });
+                      */
+                    var val = {
+                      jobid: this.state.jobs[0],
+                      title: this.state.jobs[0].title,
+                      location: this.state.jobs[0].location,
+                      experience: this.state.jobs[0].experience,
+                      image: this.state.jobs[0].image,
+                      description: this.state.jobs[0].description,
+                      workrole: this.state.jobs[0].workrole,
+                      qualification: this.state.jobs[0].qualification,
+                      emptype: this.state.jobs[0].emptype,
+                      jobfunct: this.state.jobs[0].jobfunct,
+                      jobindustry: this.state.jobs[0].jobindustry
+                    };
+
+                    axios.post("/api/sjobs", val).then(res => {
+                      if (res.statusText === "OK") {
+                        alert("saved");
+                      }
+                    });
                   }}
                 >
                   <span>{this.state.saveText}</span>

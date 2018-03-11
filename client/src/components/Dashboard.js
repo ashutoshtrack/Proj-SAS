@@ -29,14 +29,10 @@ https://rallycoding.herokuapp.com/api/music_albums
   renderColumns(album, i) {
     return (
       <div className=" col-md-3" key={i}>
-        <Link
-          to={"/jobdesc/" + album._id}
-          activeClassName="active"
-          class="linkBTN"
-        >
+        <Link to={"/jobdesc/" + album._id} className="linkBTN">
           <div className=" mango">
             <div className="row" class="imgFrm">
-              <img src={album.image} alt="Avatar" class="prfIMG" />
+              <img src={album.image} alt="Avatar" className="prfIMG" />
             </div>
             <div className="containere">
               <h4>
@@ -58,7 +54,7 @@ https://rallycoding.herokuapp.com/api/music_albums
 
   renderAlbums() {
     let content = [];
-    let linkBTN = "./jobProfile";
+
     this.state.albums.forEach((album, i) => {
       if ((i + 1) % 4 === 0) {
         content.push(

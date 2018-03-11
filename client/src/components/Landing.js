@@ -12,7 +12,7 @@ class Landing extends Component {
           animationOut="fadeOut"
           isVisible={true}
         >
-          <div className="row" class="hid">
+          <div className="row hid">
             <Carousel>
               <Carousel.Item>
                 <img

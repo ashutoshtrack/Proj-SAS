@@ -14,7 +14,7 @@ class ViewProfile extends Component {
         <div>
           <div className="row" class="profHead">
             <div class="compImg">
-              <img src={this.props.auth.image} class="jprfIMG" />
+              <img src={this.props.auth.image} alt="profpic" class="jprfIMG" />
             </div>
           </div>
 
