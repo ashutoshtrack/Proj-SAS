@@ -113,6 +113,45 @@ class ViewProfile extends Component {
               isVisible={true}
             >
               <div className="row" class="compDisp">
+                <span class="title">Project</span>
+                <br />
+                <br />
+                <span class="title2">&nbsp; &nbsp; Project 1</span>
+                <button class="del">
+                  <FontAwesome name="minus-square" class="delb" />
+                </button>
+                <br />
+                <span class="title">
+                  &nbsp; &nbsp; Self or Organigation name this project belong to
+                </span>
+                <br />
+                <span class="disp">
+                  &nbsp; &nbsp; Dec 2017 - Present
+                  <br />
+                  <br />
+                  <p class="pad">
+                    The standard chunk of Lorem Ipsum used since the 1500s is
+                    reproduced below for those interested. Sections 1.10.32 and
+                    1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are
+                    also reproduced in their exact original form, accompanied by
+                    English versions from the 1914 translation by H. Rackham.<a
+                      href=""
+                      class="vProj"
+                    >
+                      View Project
+                    </a>
+                  </p>
+                </span>
+                <hr />
+              </div>
+            </Animated>
+
+            <Animated
+              animationIn="faceInUp"
+              animationOut="fadeOut"
+              isVisible={true}
+            >
+              <div className="row" class="compDisp">
                 <span class="title">Skill</span>
                 <br />
                 <br />
@@ -189,6 +228,36 @@ class ViewProfile extends Component {
             </Animated>
 
             <Animated
+              animationIn="faceInUp"
+              animationOut="fadeOut"
+              isVisible={true}
+            >
+              <div className="row" class="compDisp">
+                <span class="title">Certification</span>
+                <br />
+                <br />
+                <span class="title2">&nbsp; &nbsp;Certificate 1</span>
+                <button class="del">
+                  <FontAwesome name="minus-square" class="delb" />
+                </button>
+                <br />
+                <span class="title">
+                  &nbsp; &nbsp;Organigation certificate belong to
+                </span>
+                <br />
+                <span class="disp">
+                  &nbsp; &nbsp;Duration: Dec 2017 - Feb-2018
+                  <a href="#" class="vProj">
+                    View Certificate
+                  </a>
+                </span>
+
+                <br />
+                <hr />
+              </div>
+            </Animated>
+
+            <Animated
               animationIn="fadeInUp"
               animationOut="fadeOut"
               isVisible={true}
@@ -207,6 +276,8 @@ class ViewProfile extends Component {
                     &nbsp;&nbsp;Birthdate: 19-Sep-1996
                     <br />
                     &nbsp;&nbsp;Gender: Male
+                    <br />
+                    &nbsp;&nbsp;languages: Hindi, English, Marathi
                   </span>
                   <br />
                 </p>
