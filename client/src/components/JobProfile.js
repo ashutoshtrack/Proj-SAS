@@ -7,8 +7,12 @@ import {
   Tooltip
 } from "react-bootstrap";
 import { Animated } from "react-animated-css";
+import { InputGroup, ProgressBar } from "react-bootstrap";
+import InputField from "./InputField";
+import { Field, reduxForm } from "redux-form";
 import axios from "axios";
 
+var FontAwesome = require("react-fontawesome");
 //import { Navbar, NavItem, Nav, NavDropdown, MenuItem } from "react-bootstrap";
 var counter = 0;
 class JobProfile extends Component {
@@ -79,6 +83,10 @@ class JobProfile extends Component {
         this.setState({ saveText: "SAVED" });
       }
     });
+  }
+
+  handleSubmitter() {
+    alert("he");
   }
 
   render() {
@@ -220,31 +228,35 @@ class JobProfile extends Component {
                     <Modal.Title>Profile Checkout</Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
-                    <h4>Quick Fill</h4>
-                    <p>
-                      Duis mollis, est non commodo luctus, nisi erat porttitor
-                      ligula.
-                    </p>
-
-                    <h4>Popover in a modal</h4>
-                    <p>
-                      there is a{" "}
-                      <OverlayTrigger overlay={popover}>
-                        <a href="#popover">popover</a>
-                      </OverlayTrigger>{" "}
-                      here
-                    </p>
-
-                    <h4>Tooltips in a modal</h4>
-                    <p>
-                      there is a{" "}
-                      <OverlayTrigger overlay={tooltip}>
-                        <a href="#tooltip">tooltip</a>
-                      </OverlayTrigger>{" "}
-                      here
-                    </p>
-
-                    <hr />
+                    <form onSubmit={this.handleSubmitter.bind(this)}>
+                      <fieldset>
+                        <center>
+                          <h4>Mobile number</h4>
+                        </center>
+                        <div className="row">
+                          <div className="col-md-3"></div>
+                          <div className="col-md-6">
+                            <InputGroup>
+                              <InputGroup.Addon>
+                                <FontAwesome name="phone" />
+                              </InputGroup.Addon>
+                              <Field
+                                name="phoneno"
+                                type="text"
+                                component={InputField}
+                                type="number"
+                              />
+                            </InputGroup>
+                          </div>
+                          <div className="col-md-3"></div>
+                        </div>
+                        <br /> <br />
+                        
+                        <div className="col-md-12">
+                          <ProgressBar active now={60} label={`60%`} />;
+                        </div>
+                      </fieldset>
+                    </form>
                   </Modal.Body>
                   <Modal.Footer>
                     <Button onClick={this.handleClose.bind(this)}>Close</Button>
@@ -324,5 +336,10 @@ class JobProfile extends Component {
     );
   }
 }
+
+JobProfile = reduxForm({
+  // a unique name for the form
+  form: "jobby"
+})(JobProfile);
 
 export default JobProfile;
