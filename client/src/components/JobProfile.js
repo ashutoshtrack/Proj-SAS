@@ -10,14 +10,14 @@ import { Animated } from "react-animated-css";
 import axios from "axios";
 
 //import { Navbar, NavItem, Nav, NavDropdown, MenuItem } from "react-bootstrap";
-
+var counter = 0;
 class JobProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
       jobs: null,
       show: false,
-      jobsupdtres: null,
+
       saveText: "SAVE"
     };
   }
@@ -28,7 +28,12 @@ class JobProfile extends Component {
       .get("/api" + window.location.pathname)
       .then(response => this.setState({ jobs: response.data }));
   }
-
+  /* componentWillUpdate() {
+    axios
+      .get("/api/sjobs/" + this.state.jobs[0].id)
+      .then(response => console.log("working mahaveer"));
+  }
+  */
   // work fetchers
   workrolefetcher() {
     let contentboy = [];
@@ -62,11 +67,52 @@ class JobProfile extends Component {
 
   // modal workouts end here
 
+  //dochecker
+  dochecker(ide) {
+    axios.get("/api/sjobs/" + ide).then(response => {
+      console.log("response data lenth", response.data.length);
+      if (response.data.length === 0) {
+        console.log("khali", response);
+        this.setState({ saveText: "SAVE" });
+      } else {
+        console.log("bhara", response);
+        this.setState({ saveText: "SAVED" });
+      }
+    });
+  }
+
   render() {
     console.log(this.state.jobs);
     if (!this.state.jobs === null || !this.state.jobs === false) {
       console.log("jobbyprofiler", this.state.jobs[0].title);
 
+      if (counter === 0) {
+        this.dochecker(this.state.jobs[0]._id);
+        counter++;
+      }
+
+      /*switch (this.state.checker) {
+        case false:
+          console.log("maya man ki dola");
+          this.dochecker(this.state.jobs[0]._id);
+          break;
+
+        case true:
+          console.log("punchanama kela");
+          break;
+
+        default:
+          console.log("bhendi");
+      }
+      */
+      /*
+      if (this.state.checker) {
+      } else {
+        //  this.dochecker(this.state.jobs[0]._id);
+        console.log("punchanama kela");
+      }
+*/
+      /*
       if (this.state.jobs[0].savedJob === "true") {
         if (this.state.saveText === "SAVED") {
           console.log("Already setText Done!");
@@ -74,6 +120,7 @@ class JobProfile extends Component {
           this.setState({ saveText: "SAVED" });
         }
       }
+      */
 
       //modal workouts here
       const popover = (
@@ -149,7 +196,12 @@ class JobProfile extends Component {
 
                     axios.post("/api/sjobs", val).then(res => {
                       if (res.statusText === "OK") {
-                        alert("saved");
+                        alert(
+                          "Your Job at " +
+                            this.state.jobs[0].title +
+                            " is saved successfully"
+                        );
+                        this.setState({ saveText: "SAVED" });
                       }
                     });
                   }}

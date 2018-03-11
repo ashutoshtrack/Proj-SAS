@@ -38,9 +38,16 @@ module.exports = app => {
     res.send(mas);
   });
 
-  app.get("/api/sjobs", requireLogin, async (req, res) => {
+  app.get("/api/sjobs/?:jobid?", requireLogin, async (req, res) => {
     var query = { _user: req.user.id };
 
+    if (!req.params.jobid === null || !req.params.jobid === false) {
+      query = { jobid: req.params.jobid, _user: req.user.id };
+      console.log("sjobs query 2", req.params.jobid);
+    } else {
+      query = { _user: req.user.id };
+      console.log("sjobs query", req.user.id);
+    }
     Savedjob.find(query, function(err, regist) {
       if (err) {
         throw err;
