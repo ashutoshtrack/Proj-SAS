@@ -51,13 +51,13 @@ class Header extends Component {
                 title={Droptitle}
                 id="basic-nav-dropdown"
               >
-                <MenuItem eventKey={3.1}>
+                <MenuItem eventKey={3.1} href="/editprofile">
                   Edit Profile
                   <span className="iconSize">
                     <FontAwesome name="edit" />
                   </span>
                 </MenuItem>
-                <MenuItem eventKey={3.2} href="/viewProfile">
+                <MenuItem eventKey={3.2} href="/viewprofile">
                   View Profile
                   <span className="iconSize">
                     <FontAwesome name="eye" />

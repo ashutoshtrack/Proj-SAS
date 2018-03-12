@@ -7,10 +7,8 @@ import InputField from "./InputField";
 import { Field, reduxForm } from "redux-form";
 import axios from "axios";
 import * as actions from "../actions";
-import values from "redux-form/lib/values";
-import formValues from "redux-form/lib/formValues";
 
-var FontAwesome = require("react-fontawesome");
+//var FontAwesome = require("react-fontawesome");
 //import { Navbar, NavItem, Nav, NavDropdown, MenuItem } from "react-bootstrap";
 var counter = 0;
 var counter2 = 0;
@@ -37,12 +35,7 @@ class JobProfile extends Component {
       .get("/api" + window.location.pathname)
       .then(response => this.setState({ jobs: response.data }));
   }
-  /* componentWillUpdate() {
-    axios
-      .get("/api/sjobs/" + this.state.jobs[0].id)
-      .then(response => console.log("working mahaveer"));
-  }
-  */
+
   // work fetchers
   workrolefetcher() {
     let contentboy = [];
@@ -127,11 +120,14 @@ class JobProfile extends Component {
         if (this.props.mongoresp.mongoresp.message === "Success") {
           this.setState({ show: false, apply: "APPLIED" });
           var kimat = {
-            jobid: this.state.jobs[0]
+            jobid: this.state.jobs[0],
+            resumepath:
+              "/api/img/" + this.props.mongoresp.mongoresp.file.filename,
+            viewprofilepath: "/viewprofile/" + this.props.auth._id
           };
           axios.post("/api/resume", kimat).then(res => {
             if (res.statusText === "OK") {
-              alert("Done bro");
+              alert("Done!");
             }
           });
           console.log("execute this");
@@ -237,7 +233,7 @@ class JobProfile extends Component {
                 <button
                   class="apply"
                   onClick={() => {
-                    if (this.state.saveText === "SAVED") {
+                    if (this.state.saveText === "APPLIED") {
                       alert("Already Applied With " + this.state.jobs[0].title);
                     } else {
                       this.setState({ show: true });
@@ -367,6 +363,6 @@ JobProfile = reduxForm({
   form: "jobber"
 })(JobProfile);
 function mapStateToProps(state) {
-  return { mongoresp: state.mongoresp };
+  return { mongoresp: state.mongoresp, auth: state.auth };
 }
 export default connect(mapStateToProps, actions)(JobProfile);

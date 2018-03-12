@@ -5,10 +5,11 @@ const Resume = mongoose.model("resumes");
 
 module.exports = app => {
   app.post("/api/resume", requireLogin, async (req, res) => {
-    const { jobid } = req.body;
+    const { jobid, resumepath, viewprofilepath } = req.body;
     const resumer = new Resume({
       jobid,
-      apply: "true",
+      resumepath,
+      viewprofilepath,
       _user: req.user.id
     });
     const mas = await resumer.save();

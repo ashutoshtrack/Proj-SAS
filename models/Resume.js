@@ -3,7 +3,8 @@ const { Schema } = mongoose;
 
 const resumeSchema = new Schema({
   jobid: String,
-  apply: String,
+  resumepath: String,
+  viewprofilepath: String,
   _user: { type: Schema.Types.ObjectId, ref: "User" }
 });
 
