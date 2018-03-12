@@ -8,5 +8,5 @@ export default combineReducers({
   auth: authReducer,
   form: formReducer,
   respo: responseReducer,
-  mongores: resumeReducer
+  mongoresp: resumeReducer
 });

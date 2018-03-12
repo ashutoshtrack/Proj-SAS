@@ -19,6 +19,7 @@ import formValues from "redux-form/lib/formValues";
 var FontAwesome = require("react-fontawesome");
 //import { Navbar, NavItem, Nav, NavDropdown, MenuItem } from "react-bootstrap";
 var counter = 0;
+var counter2 = 0;
 class JobProfile extends Component {
   constructor(props) {
     super(props);
@@ -26,7 +27,8 @@ class JobProfile extends Component {
       jobs: null,
       show: false,
       file: null,
-      saveText: "SAVE"
+      saveText: "SAVE",
+      apply: "APPLY"
     };
     console.log(props, "constru");
     this.onFormSubmit = this.onFormSubmit.bind(this);
@@ -108,7 +110,21 @@ class JobProfile extends Component {
 
   render() {
     console.log(this.state.jobs);
-    console.log(this.props.mongores, "intentionally");
+
+    console.log(this.props.mongoresp, "poppo");
+
+    if (counter2 === 0) {
+      if (
+        !this.props.mongoresp.mongoresp === null ||
+        !this.props.mongoresp.mongoresp === false
+      ) {
+        if (this.props.mongoresp.mongoresp.message === "Success") {
+          this.setState({ show: false, apply: "APPLIED" });
+          console.log("execute this");
+          counter2++;
+        }
+      }
+    }
     if (!this.state.jobs === null || !this.state.jobs === false) {
       console.log("jobbyprofiler", this.state.jobs[0].title);
 
@@ -226,7 +242,7 @@ class JobProfile extends Component {
                   <span>{this.state.saveText}</span>
                 </button>
                 <button class="apply" onClick={this.handleShow.bind(this)}>
-                  APPLY
+                  {this.state.apply}
                 </button>
 
                 <Modal
@@ -349,6 +365,6 @@ JobProfile = reduxForm({
   form: "jobber"
 })(JobProfile);
 function mapStateToProps(state) {
-  return { mongores: state.mongores };
+  return { mongoresp: state.mongoresp };
 }
 export default connect(mapStateToProps, actions)(JobProfile);
