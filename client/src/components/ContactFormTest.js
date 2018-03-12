@@ -70,9 +70,8 @@ ContactFormTest = reduxForm({
   // a unique name for the form
   form: "basicdetails",
   destroyOnUnmount: false
-
 })(ContactFormTest);
 function mapStateToProps(state) {
-  return { auth: state.auth };
+  return { form: state.form, auth: state.auth };
 }
 export default connect(mapStateToProps, null)(ContactFormTest);

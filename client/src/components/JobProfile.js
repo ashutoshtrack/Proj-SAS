@@ -6,11 +6,13 @@ import {
   OverlayTrigger,
   Tooltip
 } from "react-bootstrap";
+import { connect } from "react-redux";
 import { Animated } from "react-animated-css";
 import { InputGroup, ProgressBar } from "react-bootstrap";
 import InputField from "./InputField";
 import { Field, reduxForm } from "redux-form";
 import axios from "axios";
+import * as actions from "../actions";
 
 var FontAwesome = require("react-fontawesome");
 //import { Navbar, NavItem, Nav, NavDropdown, MenuItem } from "react-bootstrap";
@@ -21,9 +23,11 @@ class JobProfile extends Component {
     this.state = {
       jobs: null,
       show: false,
-
+      file: null,
       saveText: "SAVE"
     };
+    this.onFormSubmit = this.onFormSubmit.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
   componentWillMount() {
@@ -89,8 +93,19 @@ class JobProfile extends Component {
     alert("he");
   }
 
+  //file upload handler
+  onFormSubmit(e) {
+    e.preventDefault(); // Stop form submit
+    this.props.postResume(this.state.file);
+  }
+  onChange(e) {
+    this.setState({ file: e.target.files[0] });
+  }
+  // end of an file uploader
+
   render() {
     console.log(this.state.jobs);
+    console.log(this.props.mongores, "intentionally");
     if (!this.state.jobs === null || !this.state.jobs === false) {
       console.log("jobbyprofiler", this.state.jobs[0].title);
 
@@ -228,38 +243,54 @@ class JobProfile extends Component {
                     <Modal.Title>Profile Checkout</Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
-                    <form onSubmit={this.handleSubmitter.bind(this)}>
+                    <form onSubmit={this.onFormSubmit}>
                       <fieldset>
                         <center>
                           <h4>Mobile number</h4>
                         </center>
-                        <div className="row">
-                          <div className="col-md-3"></div>
-                          <div className="col-md-6">
-                            <InputGroup>
-                              <InputGroup.Addon>
-                                <FontAwesome name="phone" />
-                              </InputGroup.Addon>
-                              <Field
-                                name="phoneno"
-                                type="text"
-                                component={InputField}
-                                type="number"
-                              />
-                            </InputGroup>
-                          </div>
-                          <div className="col-md-3"></div>
+                        <div className="col-md-3" />
+                        <div className="col-md-6">
+                          <InputGroup>
+                            <InputGroup.Addon>
+                              <FontAwesome name="phone" />
+                            </InputGroup.Addon>
+                            <Field
+                              name="phoneno"
+                              component={InputField}
+                              type="number"
+                            />
+                          </InputGroup>
                         </div>
+                        <div className="col-md-3" />
                         <br /> <br />
-                        
                         <div className="col-md-12">
                           <ProgressBar active now={60} label={`60%`} />;
                         </div>
+                        <br />
+                        <div className="col-md-6  form-group">
+                          <label class="col-md-12 control-label">
+                            Attach PDF
+                          </label>
+                          <div class="col-md-12">
+                            <Field
+                              type="file"
+                              id="inputFile"
+                              required
+                              onChange={this.onChange}
+                              component={InputField}
+                            />
+                          </div>
+                        </div>
                       </fieldset>
+                      <Button type="submit" bsStyle="primary">
+                        Submit
+                      </Button>
                     </form>
                   </Modal.Body>
                   <Modal.Footer>
-                    <Button onClick={this.handleClose.bind(this)}>Close</Button>
+                    <Button type="submit" bsStyle="primary">
+                      Close
+                    </Button>
                   </Modal.Footer>
                 </Modal>
               </div>
@@ -339,7 +370,9 @@ class JobProfile extends Component {
 
 JobProfile = reduxForm({
   // a unique name for the form
-  form: "jobby"
+  form: "jobber"
 })(JobProfile);
-
-export default JobProfile;
+function mapStateToProps(state) {
+  return { form: state.form, mongores: state.mongores };
+}
+export default connect(mapStateToProps, actions)(JobProfile);
