@@ -14,6 +14,8 @@ var FontAwesome = require("react-fontawesome");
 //import { Navbar, NavItem, Nav, NavDropdown, MenuItem } from "react-bootstrap";
 var counter = 0;
 var counter2 = 0;
+var counter3 = 0;
+
 class JobProfile extends Component {
   constructor(props) {
     super(props);
@@ -68,10 +70,6 @@ class JobProfile extends Component {
     this.setState({ show: false });
   }
 
-  handleShow() {
-    this.setState({ show: true });
-  }
-
   // modal workouts end here
 
   //dochecker
@@ -84,6 +82,20 @@ class JobProfile extends Component {
       } else {
         console.log("bhara", response);
         this.setState({ saveText: "SAVED" });
+      }
+    });
+  }
+  docheckerapplier(ider) {
+    console.log("inside dochecker applier");
+    axios.get("/api/resume/" + ider).then(response => {
+      if (response.data === null) {
+        console.log("lemon", response);
+
+        console.log("empty apply", response);
+        this.setState({ apply: "APPLY" });
+      } else {
+        console.log("apply text", response);
+        this.setState({ apply: "APPLIED" });
       }
     });
   }
@@ -134,37 +146,11 @@ class JobProfile extends Component {
         this.dochecker(this.state.jobs[0]._id);
         counter++;
       }
-
-      /*switch (this.state.checker) {
-        case false:
-          console.log("maya man ki dola");
-          this.dochecker(this.state.jobs[0]._id);
-          break;
-
-        case true:
-          console.log("punchanama kela");
-          break;
-
-        default:
-          console.log("bhendi");
+      if (counter3 === 0) {
+        console.log("fired");
+        this.docheckerapplier(this.state.jobs[0]._id);
+        counter3++;
       }
-      */
-      /*
-      if (this.state.checker) {
-      } else {
-        //  this.dochecker(this.state.jobs[0]._id);
-        console.log("punchanama kela");
-      }
-*/
-      /*
-      if (this.state.jobs[0].savedJob === "true") {
-        if (this.state.saveText === "SAVED") {
-          console.log("Already setText Done!");
-        } else {
-          this.setState({ saveText: "SAVED" });
-        }
-      }
-      */
 
       return (
         <div>
@@ -215,35 +201,49 @@ class JobProfile extends Component {
                         }
                       });
                       */
-                    var val = {
-                      jobid: this.state.jobs[0],
-                      title: this.state.jobs[0].title,
-                      location: this.state.jobs[0].location,
-                      experience: this.state.jobs[0].experience,
-                      image: this.state.jobs[0].image,
-                      description: this.state.jobs[0].description,
-                      workrole: this.state.jobs[0].workrole,
-                      qualification: this.state.jobs[0].qualification,
-                      emptype: this.state.jobs[0].emptype,
-                      jobfunct: this.state.jobs[0].jobfunct,
-                      jobindustry: this.state.jobs[0].jobindustry
-                    };
 
-                    axios.post("/api/sjobs", val).then(res => {
-                      if (res.statusText === "OK") {
-                        alert(
-                          "Your Job at " +
-                            this.state.jobs[0].title +
-                            " is saved successfully"
-                        );
-                        this.setState({ saveText: "SAVED" });
-                      }
-                    });
+                    if (this.state.saveText === "SAVED") {
+                      alert("Already Saved!");
+                    } else {
+                      var val = {
+                        jobid: this.state.jobs[0],
+                        title: this.state.jobs[0].title,
+                        location: this.state.jobs[0].location,
+                        experience: this.state.jobs[0].experience,
+                        image: this.state.jobs[0].image,
+                        description: this.state.jobs[0].description,
+                        workrole: this.state.jobs[0].workrole,
+                        qualification: this.state.jobs[0].qualification,
+                        emptype: this.state.jobs[0].emptype,
+                        jobfunct: this.state.jobs[0].jobfunct,
+                        jobindustry: this.state.jobs[0].jobindustry
+                      };
+
+                      axios.post("/api/sjobs", val).then(res => {
+                        if (res.statusText === "OK") {
+                          alert(
+                            "Your Job at " +
+                              this.state.jobs[0].title +
+                              " is saved successfully"
+                          );
+                          this.setState({ saveText: "SAVED" });
+                        }
+                      });
+                    }
                   }}
                 >
                   <span>{this.state.saveText}</span>
                 </button>
-                <button class="apply" onClick={this.handleShow.bind(this)}>
+                <button
+                  class="apply"
+                  onClick={() => {
+                    if (this.state.saveText === "SAVED") {
+                      alert("Already Applied With " + this.state.jobs[0].title);
+                    } else {
+                      this.setState({ show: true });
+                    }
+                  }}
+                >
                   {this.state.apply}
                 </button>
 

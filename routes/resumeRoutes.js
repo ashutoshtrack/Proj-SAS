@@ -25,7 +25,7 @@ module.exports = app => {
       console.log("sjobs query", req.user.id);
     }
 
-    Resume.findOne({ _user: usere }, function(err, rasmalai) {
+    Resume.findOne(query, function(err, rasmalai) {
       if (err) {
         throw err;
       }
