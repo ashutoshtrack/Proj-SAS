@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const resumeSchema = new Schema({
-  resume: String,
+  jobid: String,
+  apply: String,
   _user: { type: Schema.Types.ObjectId, ref: "User" }
 });
 

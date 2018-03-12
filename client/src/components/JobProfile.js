@@ -1,16 +1,10 @@
 import React, { Component } from "react";
-import {
-  Modal,
-  Button,
-  Popover,
-  OverlayTrigger,
-  Tooltip
-} from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { Animated } from "react-animated-css";
 import { InputGroup, ProgressBar } from "react-bootstrap";
 import InputField from "./InputField";
-import { Field, reduxForm, getFormValues } from "redux-form";
+import { Field, reduxForm } from "redux-form";
 import axios from "axios";
 import * as actions from "../actions";
 import values from "redux-form/lib/values";
@@ -120,6 +114,14 @@ class JobProfile extends Component {
       ) {
         if (this.props.mongoresp.mongoresp.message === "Success") {
           this.setState({ show: false, apply: "APPLIED" });
+          var kimat = {
+            jobid: this.state.jobs[0]
+          };
+          axios.post("/api/resume", kimat).then(res => {
+            if (res.statusText === "OK") {
+              alert("Done bro");
+            }
+          });
           console.log("execute this");
           counter2++;
         }
