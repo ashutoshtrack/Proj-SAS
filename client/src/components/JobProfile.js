@@ -10,9 +10,11 @@ import { connect } from "react-redux";
 import { Animated } from "react-animated-css";
 import { InputGroup, ProgressBar } from "react-bootstrap";
 import InputField from "./InputField";
-import { Field, reduxForm } from "redux-form";
+import { Field, reduxForm, getFormValues } from "redux-form";
 import axios from "axios";
 import * as actions from "../actions";
+import values from "redux-form/lib/values";
+import formValues from "redux-form/lib/formValues";
 
 var FontAwesome = require("react-fontawesome");
 //import { Navbar, NavItem, Nav, NavDropdown, MenuItem } from "react-bootstrap";
@@ -26,6 +28,7 @@ class JobProfile extends Component {
       file: null,
       saveText: "SAVE"
     };
+    console.log(props, "constru");
     this.onFormSubmit = this.onFormSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
   }
@@ -145,15 +148,6 @@ class JobProfile extends Component {
       }
       */
 
-      //modal workouts here
-      const popover = (
-        <Popover id="modal-popover" title="popover">
-          very popover. such engagement
-        </Popover>
-      );
-      const tooltip = <Tooltip id="modal-tooltip">wow.</Tooltip>;
-      //modal workout end here
-
       return (
         <div>
           <div className="row" class="compHead">
@@ -245,24 +239,6 @@ class JobProfile extends Component {
                   <Modal.Body>
                     <form onSubmit={this.onFormSubmit}>
                       <fieldset>
-                        <center>
-                          <h4>Mobile number</h4>
-                        </center>
-                        <div className="col-md-3" />
-                        <div className="col-md-6">
-                          <InputGroup>
-                            <InputGroup.Addon>
-                              <FontAwesome name="phone" />
-                            </InputGroup.Addon>
-                            <Field
-                              name="phoneno"
-                              component={InputField}
-                              type="number"
-                            />
-                          </InputGroup>
-                        </div>
-                        <div className="col-md-3" />
-                        <br /> <br />
                         <div className="col-md-12">
                           <ProgressBar active now={60} label={`60%`} />;
                         </div>
@@ -373,6 +349,6 @@ JobProfile = reduxForm({
   form: "jobber"
 })(JobProfile);
 function mapStateToProps(state) {
-  return { form: state.form, mongores: state.mongores };
+  return { mongores: state.mongores };
 }
 export default connect(mapStateToProps, actions)(JobProfile);

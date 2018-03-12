@@ -46,6 +46,13 @@ export const postResume = resume => {
   console.log("frpu", formy);
   return function(dispatch) {
     const config = {
+      onUploadProgress: progressEvent => {
+        console.log(
+          "upload progress" +
+            Math.round(progressEvent.loaded / progressEvent.total * 100) +
+            "%"
+        );
+      },
       headers: {
         "Content-Type":
           "multipart/form-data; boundary=----WebKitFormBoundary2UB2yluNFipmGTV5",
@@ -54,7 +61,12 @@ export const postResume = resume => {
     };
 
     axios
-      .post("/api/img", formy, config)
+      .post(
+        "/api/img",
+
+        formy,
+        config
+      )
       .then(res => dispatch({ type: UPLOAD_RESUME, payload: res.data }));
   };
 };
