@@ -4,6 +4,7 @@ const { Schema } = mongoose;
 const savedjobschema = new Schema({
   jobid: { type: Schema.Types.ObjectId, ref: "Jobdesc" },
   title: String,
+  job_profile: String,
   location: String,
   experience: String,
   image: String,

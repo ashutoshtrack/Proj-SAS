@@ -8,6 +8,7 @@ module.exports = app => {
     const {
       jobid,
       title,
+      job_profile,
       location,
       experience,
       image,
@@ -23,6 +24,7 @@ module.exports = app => {
     const jobsaver = new Savedjob({
       jobid,
       title,
+      job_profile,
       location,
       experience,
       image,

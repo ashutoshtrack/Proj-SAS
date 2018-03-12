@@ -20,6 +20,7 @@ module.exports = app => {
       locationer,
       ghLink,
       registered: "false",
+
       _user: req.user.id
     });
     const mas = await regist.save();
@@ -35,6 +36,7 @@ module.exports = app => {
         orgName: formie.orgName,
         locationer: formie.locationer,
         ghLink: formie.ghLink,
+        role: "student",
         registered: true
       }
     };

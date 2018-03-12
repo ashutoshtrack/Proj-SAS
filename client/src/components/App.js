@@ -17,14 +17,12 @@ import Dashboard from "./Dashboard";
 import SavedJobsArena from "./SavedJobsArena";
 
 //const Header = () => <h2>Header</h2>;
-
+const Dummy = () => <h2>Dummy</h2>;
 var loggedin = false;
 var registered = false;
-
+var student = false;
 var counter = 1;
 class App extends Component {
-  com;
-
   componentDidMount() {
     this.props.fetchUser();
     console.log("this is movieng");
@@ -39,6 +37,10 @@ class App extends Component {
         !this.props.respo.orgName === false
       ) {
         registered = true;
+
+        if (this.props.respo.role === "student") {
+          student = true;
+        }
         return true;
       }
     }
@@ -79,7 +81,16 @@ class App extends Component {
               path="/new"
               component={() => {
                 if (!loggedin === false) {
-                  return registered ? <Dashboard /> : <RegFormey />;
+                  if (!registered === false) {
+                    console.log("mashalla mahallsa ", student);
+                    if (student) {
+                      return <Dummy />;
+                    }
+                    return <Dashboard />;
+                  } else {
+                    console.log("mashalla mahallsa2 ", student);
+                    return <RegFormey />;
+                  }
                 } else {
                   return <Landing />;
                 }

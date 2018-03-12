@@ -168,9 +168,11 @@ class JobProfile extends Component {
             >
               <div className="row" class="compDisp">
                 <p class="mid">
-                  <span class="bld">&nbsp;{this.state.jobs[0].title}</span>
+                  <span class="bld">
+                    &nbsp;{this.state.jobs[0].job_profile}
+                  </span>
                   <br />
-                  <span class="name">&nbsp;Company Name</span>
+                  <span class="name">&nbsp;{this.state.jobs[0].title}</span>
                   <br />
                   <span class="disp">
                     &nbsp;Location: {this.state.jobs[0].location}
@@ -204,6 +206,7 @@ class JobProfile extends Component {
                       var val = {
                         jobid: this.state.jobs[0],
                         title: this.state.jobs[0].title,
+                        job_profile: this.state.jobs[0].job_profile,
                         location: this.state.jobs[0].location,
                         experience: this.state.jobs[0].experience,
                         image: this.state.jobs[0].image,

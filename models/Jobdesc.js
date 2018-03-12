@@ -3,6 +3,7 @@ const { Schema } = mongoose;
 
 const jobdescSchema = new Schema({
   title: String,
+  job_profile: String,
   location: String,
   experience: String,
   image: String,

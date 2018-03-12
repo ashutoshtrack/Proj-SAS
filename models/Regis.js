@@ -9,7 +9,7 @@ const regisSchema = new Schema({
   locationer: String,
   ghLink: String,
   registered: String,
-
+  role: String,
   _user: { type: Schema.Types.ObjectId, ref: "User" }
 });
 

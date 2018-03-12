@@ -36,10 +36,10 @@ https://rallycoding.herokuapp.com/api/music_albums
             </div>
             <div className="containere">
               <h4>
-                <b> {album.title}</b>
+                <b> {album.job_profile}</b>
               </h4>
               <p>
-                Job Description
+                {album.title}
                 <br />
                 Location: {album.location}
                 <br />
