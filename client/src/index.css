@@ -695,6 +695,7 @@ h1 {
 }
 
 .del {
+  margin-right: 5%;
   border-radius: 2px;
   font-size: 20px;
   border: none;
@@ -725,4 +726,14 @@ h1 {
 
 .inline {
   display: inline;
+}
+
+.vProj {
+  float: right;
+  margin-right: 5%;
+  margin-top: 20px;
+  font-size: 0.8em;
+}
+.vProj:hover {
+  text-decoration: none;
 }
