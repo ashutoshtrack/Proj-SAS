@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Navbar, NavItem, Nav, NavDropdown, MenuItem } from "react-bootstrap";
 var FontAwesome = require("react-fontawesome");
 
@@ -57,8 +57,10 @@ class Header extends Component {
                     <FontAwesome name="edit" />
                   </span>
                 </MenuItem>
-                <MenuItem eventKey={3.2} href="/viewprofile">
-                  View Profile
+                <MenuItem eventKey={3.2}>
+                  <Link to={"/viewprofile/" + this.props.auth._id}>
+                    View Profile
+                  </Link>
                   <span className="iconSize">
                     <FontAwesome name="eye" />
                   </span>
